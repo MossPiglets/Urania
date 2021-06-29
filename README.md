@@ -1,2 +1,2 @@
-# Urania-
+# Urania
 Cells calculator for Bruxa
