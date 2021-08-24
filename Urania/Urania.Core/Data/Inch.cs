@@ -34,7 +34,7 @@ namespace Urania.Core.Data {
             [InchName.TwentyNineThirtySecond] = 23.02M,
             [InchName.FifteenSixteenth] = 23.81M,
             [InchName.ThirtyOneThirtySecond] = 24.61M,
-            [InchName.One] = 1.00M
+            [InchName.One] = 25.40M
         };
     }
 }
