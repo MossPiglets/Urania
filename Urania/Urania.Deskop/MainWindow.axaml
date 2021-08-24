@@ -5,7 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="600"
         x:Class="Urania.Deskop.MainWindow"
         Title="Urania">
-	
+
 	<StackPanel>
 		<StackPanel Orientation="Horizontal">
 			<TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."  
@@ -46,9 +46,9 @@
 				</StackPanel>
 				
 				<StackPanel Orientation="Horizontal">
+					<RadioButton></RadioButton>
 					<TextBlock Text="SWG"/>
 					<ComboBox></ComboBox>
-					<RadioButton></RadioButton>
 				</StackPanel>
 				
 				<StackPanel Orientation="Horizontal">
