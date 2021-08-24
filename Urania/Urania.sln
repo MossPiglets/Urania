@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Urania.Deskop", "Urania.Deskop\Urania.Deskop.csproj", "{556755BB-8EA1-437E-84DF-C348E0AC4801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urania.Core", "Urania.Core\Urania.Core.csproj", "{A36AB9FC-9807-495B-B56B-9D3AE7628F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Urania.Core", "Urania.Core\Urania.Core.csproj", "{A36AB9FC-9807-495B-B56B-9D3AE7628F6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urania.Tests", "Urania.Tests\Urania.Tests.csproj", "{B8287087-B37C-44F1-A65F-0D72041195F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Urania.Tests", "Urania.Tests\Urania.Tests.csproj", "{B8287087-B37C-44F1-A65F-0D72041195F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Urania.Desktop", "Urania.Desktop\Urania.Desktop.csproj", "{2EDB4A6C-EF12-4378-91C3-DE7562C14A58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B8287087-B37C-44F1-A65F-0D72041195F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8287087-B37C-44F1-A65F-0D72041195F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8287087-B37C-44F1-A65F-0D72041195F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EDB4A6C-EF12-4378-91C3-DE7562C14A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EDB4A6C-EF12-4378-91C3-DE7562C14A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EDB4A6C-EF12-4378-91C3-DE7562C14A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EDB4A6C-EF12-4378-91C3-DE7562C14A58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
