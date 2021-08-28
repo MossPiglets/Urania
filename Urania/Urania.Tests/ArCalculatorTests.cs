@@ -11,7 +11,7 @@ namespace Urania.Tests {
 			var id = 7.77M;
 			var wd = 13.13M;
 			var od = 34.03M;
-			var expectedResult = 0.59M;
+			var expectedResult = id / wd;
 
 			//Act
 			var result = ArCalculator.Calculate(id, wd, od);
@@ -25,7 +25,7 @@ namespace Urania.Tests {
 			//Arrange
 			var wd = 13.13M;
 			var od = 34.03M;
-			var expectedResult = 0.59M;
+			var expectedResult = (od - 2 * wd) / wd;
 
 			//Act
 			var result = ArCalculator.Calculate(null, wd, od);
@@ -39,7 +39,7 @@ namespace Urania.Tests {
 			//Arrange
 			var id = 7.77M;
 			var od = 34.03M;
-			var expectedResult = 0.59M;
+			var expectedResult = id / ((od - id) / 2);
 
 			//Act
 			var result = ArCalculator.Calculate(id, null, od);
@@ -53,7 +53,7 @@ namespace Urania.Tests {
 			//Arrange
 			var id = 7.77M;
 			var wd = 13.13M;
-			var expectedResult = 0.59M;
+			var expectedResult = id / wd;
 
 			//Act
 			var result = ArCalculator.Calculate(id, wd, null);
@@ -63,49 +63,94 @@ namespace Urania.Tests {
 		}
 
 		[Test]
-		public void Calculate_IdAndWdAreNulls_ShouldReturnArgumentException() {
+		public void Calculate_IdAndWdAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
+			decimal? id = null;
+			decimal? wd = null;
 			var od = 34.03M;
 
 			//Act
 			Action act = () => ArCalculator.Calculate(null, null, od);
 
 			//Assert
-			act.Should().Throw<ArgumentException>("More than one null argument");
+			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 
 		[Test]
-		public void Calculate_IdAndOdAreNulls_ShouldReturnArgumentException() {
+		public void Calculate_IdAndOdAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
+			decimal? id = null;
+			decimal? od = null;
 			var wd = 13.13M;
 
 			//Act
 			Action act = () => ArCalculator.Calculate(null, wd, null);
 
 			//Assert
-			act.Should().Throw<ArgumentException>("More than one null argument");
+			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 
 		[Test]
-		public void Calculate_OdAndWdAreNulls_ShouldReturnArgumentException() {
+		public void Calculate_OdAndWdAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
+			decimal? od = null;
+			decimal? wd = null;
 			var id = 7.77M;
 
 			//Act
 			Action act = () => ArCalculator.Calculate(id, null, null);
 
 			//Assert
-			act.Should().Throw<ArgumentException>("More than one null argument");
+			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 
 		[Test]
-		public void Calculate_AllArgumentsAreNulls_ShouldReturnArgumentException() {
+		public void Calculate_AllArgumentsAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
+			decimal? od = null;
+			decimal? wd = null;
+			decimal? id = null;
 			//Act
 			Action act = () => ArCalculator.Calculate(null, null, null);
 
 			//Assert
-			act.Should().Throw<ArgumentException>("More than one null argument");
+			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+		}
+		[Test]
+		public void Calculate_WdIsEqualZeroIdIsEqualNull_ShouldThrowDivideByZeroException() {
+			//Arrange
+			decimal? od = 34.03M;
+			decimal? wd = 0M;
+			decimal? id = null;
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+
+			//Assert
+			act.Should().Throw<DivideByZeroException>($"{nameof(wd)} cannot be 0");
+		}
+		[Test]
+		public void Calculate_WdIsEqualZeroOdIsEqualNull_ShouldThrowDivideByZeroException() {
+			//Arrange
+			decimal? od = null;
+			decimal? wd = 0M;
+			decimal? id = 7.77M;
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+
+			//Assert
+			act.Should().Throw<DivideByZeroException>($"{nameof(wd)} cannot be 0");
+		}
+		[Test]
+		public void Calculate_OdEqualId_ShouldThrowDivideByZeroException() {
+			//Arrange
+			decimal? od = null;
+			decimal? wd = 0M;
+			decimal? id = 7.77M;
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+
+			//Assert
+			act.Should().Throw<DivideByZeroException>($"{nameof(wd)} cannot be 0");
 		}
 	}
 }
