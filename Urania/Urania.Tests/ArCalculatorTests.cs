@@ -23,12 +23,13 @@ namespace Urania.Tests {
 		[Test]
 		public void Calculate_IdIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot() {
 			//Arrange
+			decimal? id = null;
 			var wd = 13.13M;
 			var od = 34.03M;
 			var expectedResult = (od - 2 * wd) / wd;
 
 			//Act
-			var result = ArCalculator.Calculate(null, wd, od);
+			var result = ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			result.Should().Be(expectedResult);
@@ -39,10 +40,11 @@ namespace Urania.Tests {
 			//Arrange
 			var id = 7.77M;
 			var od = 34.03M;
+			decimal? wd = null;
 			var expectedResult = id / ((od - id) / 2);
 
 			//Act
-			var result = ArCalculator.Calculate(id, null, od);
+			var result = ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			result.Should().Be(expectedResult);
@@ -53,10 +55,11 @@ namespace Urania.Tests {
 			//Arrange
 			var id = 7.77M;
 			var wd = 13.13M;
+			decimal? od = null;
 			var expectedResult = id / wd;
 
 			//Act
-			var result = ArCalculator.Calculate(id, wd, null);
+			var result = ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			result.Should().Be(expectedResult);
@@ -70,7 +73,7 @@ namespace Urania.Tests {
 			var od = 34.03M;
 
 			//Act
-			Action act = () => ArCalculator.Calculate(null, null, od);
+			Action act = () => ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
@@ -85,7 +88,7 @@ namespace Urania.Tests {
 			var wd = 13.13M;
 
 			//Act
-			Action act = () => ArCalculator.Calculate(null, wd, null);
+			Action act = () => ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
@@ -100,7 +103,7 @@ namespace Urania.Tests {
 			var id = 7.77M;
 
 			//Act
-			Action act = () => ArCalculator.Calculate(id, null, null);
+			Action act = () => ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
@@ -114,7 +117,7 @@ namespace Urania.Tests {
 			decimal? wd = null;
 			decimal? id = null;
 			//Act
-			Action act = () => ArCalculator.Calculate(null, null, null);
+			Action act = () => ArCalculator.Calculate(id, wd, od);
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
