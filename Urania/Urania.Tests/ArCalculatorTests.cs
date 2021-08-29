@@ -73,7 +73,8 @@ namespace Urania.Tests {
 			Action act = () => ArCalculator.Calculate(null, null, od);
 
 			//Assert
-			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+			act.Should().Throw<ArgumentNullException>
+				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 
 		[Test]
@@ -87,7 +88,8 @@ namespace Urania.Tests {
 			Action act = () => ArCalculator.Calculate(null, wd, null);
 
 			//Assert
-			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+			act.Should().Throw<ArgumentNullException>
+				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 
 		[Test]
@@ -101,7 +103,8 @@ namespace Urania.Tests {
 			Action act = () => ArCalculator.Calculate(id, null, null);
 
 			//Assert
-			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+			act.Should().Throw<ArgumentNullException>
+				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 
 		[Test]
@@ -114,7 +117,8 @@ namespace Urania.Tests {
 			Action act = () => ArCalculator.Calculate(null, null, null);
 
 			//Assert
-			act.Should().Throw<ArgumentNullException>(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+			act.Should().Throw<ArgumentNullException>
+				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
 		}
 		[Test]
 		public void Calculate_WdIsEqualZeroIdIsEqualNull_ShouldThrowDivideByZeroException() {
@@ -141,16 +145,16 @@ namespace Urania.Tests {
 			act.Should().Throw<DivideByZeroException>($"{nameof(wd)} cannot be 0");
 		}
 		[Test]
-		public void Calculate_OdEqualId_ShouldThrowDivideByZeroException() {
+		public void Calculate_OdEqualIdAndWdIsEqualNull_ShouldThrowDivideByZeroException() {
 			//Arrange
-			decimal? od = null;
-			decimal? wd = 0M;
+			decimal? od = 7.77M;
+			decimal? wd = null;
 			decimal? id = 7.77M;
 			//Act
 			Action act = () => ArCalculator.Calculate(id, wd, od);
 
 			//Assert
-			act.Should().Throw<DivideByZeroException>($"{nameof(wd)} cannot be 0");
+			act.Should().Throw<DivideByZeroException>($"{nameof(od)} cannot be equal {nameof(id)}");
 		}
 	}
 }
