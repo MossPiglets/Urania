@@ -74,7 +74,7 @@ namespace Urania.Tests {
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
-				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+				(string.Empty, $"Values: {nameof(id)} == {id}, {nameof(wd)} == {wd}, {nameof(od)} == {od}");
 		}
 
 		[Test]
@@ -89,7 +89,7 @@ namespace Urania.Tests {
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
-				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+				(string.Empty, $"Values: {nameof(id)} == {id}, {nameof(wd)} == {wd}, {nameof(od)} == {od}");
 		}
 
 		[Test]
@@ -104,7 +104,7 @@ namespace Urania.Tests {
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
-				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+				(string.Empty, $"Values: {nameof(id)} == {id}, {nameof(wd)} == {wd}, {nameof(od)} == {od}");
 		}
 
 		[Test]
@@ -118,7 +118,7 @@ namespace Urania.Tests {
 
 			//Assert
 			act.Should().Throw<ArgumentNullException>
-				(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+				(string.Empty, $"Values: {nameof(id)} == {id}, {nameof(wd)} == {wd}, {nameof(od)} == {od}");
 		}
 		[Test]
 		public void Calculate_WdIsEqualZeroIdIsEqualNull_ShouldThrowDivideByZeroException() {

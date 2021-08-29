@@ -24,7 +24,8 @@ namespace Urania.Core {
                 return (decimal) (id / wd);
             }
 
-            throw new ArgumentNullException(string.Empty, $"Values: Id == {id}, Wd == {wd}, Od == {od}");
+            throw new ArgumentNullException
+                (string.Empty, $"Values: {nameof(id)} == {id}, {nameof(wd)} == {wd}, {nameof(od)} == {od}");
         }
     }
 }
