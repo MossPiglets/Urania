@@ -30,7 +30,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0x
+        dotnet-version: 5.0.x
 
     # Restore
     - name: Restore the application
