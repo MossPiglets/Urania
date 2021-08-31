@@ -154,5 +154,33 @@ namespace Urania.Tests {
 			//Assert
 			act.Should().Throw<DivideByZeroException>($"{nameof(ar)} cannot be equal -2");
 		}
+
+		[Test]
+		public void Calculate_OdIsLessThanIdAndArIsNull_ShouldThrowArgumentOtOfRangeException() {
+			//Arrange
+			decimal? ar = null;
+			var id = 34.03M;
+			var od = 7.77M;
+
+			//Act
+			Action act = () => WdCalculator.Calculate(id, ar, od);
+
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(od)} must be greater than {nameof(id)}");
+		}
+
+		[Test]
+		public void Calculate_OdIsEqualToIdAndArIsNull_ShouldThrowArgumentOtOfRangeException() {
+			//Arrange
+			decimal? ar = null;
+			var id = 51.0969M;
+			var od = 51.0969M;
+
+			//Act
+			Action act = () => WdCalculator.Calculate(id, ar, od);
+
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(od)} must be greater than {nameof(id)}");
+		}
 	}
 }
