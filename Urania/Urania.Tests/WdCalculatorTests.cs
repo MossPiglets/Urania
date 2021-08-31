@@ -7,13 +7,10 @@ using FluentAssertions;
 using NUnit.Framework;
 using Urania.Core;
 
-namespace Urania.Tests
-{
-    class WdCalculatorTests
-    {
+namespace Urania.Tests {
+    class WdCalculatorTests {
 		[Test]
-		public void Calculate_AllArgumentsAreDecimals_ShouldReturnDecimalWithTwoNumbersAfterDot()
-		{
+		public void Calculate_AllArgumentsAreDecimals_ShouldReturnDecimalWithTwoNumbersAfterDot() {
 			//Arrange
 			var id = 7.77M;
 			var ar = 13.13M;
@@ -28,8 +25,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_IdIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot()
-		{
+		public void Calculate_IdIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot() {
 			//Arrange
 			decimal? id = null;
 			var ar = 13.13M;
@@ -44,8 +40,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_ArIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot()
-		{
+		public void Calculate_ArIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot() {
 			//Arrange
 			var id = 7.77M;
 			var od = 34.03M;
@@ -60,8 +55,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_OdIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot()
-		{
+		public void Calculate_OdIsNull_ShouldReturnDecimalWithTwoNumbersAfterDot() {
 			//Arrange
 			var id = 7.77M;
 			var ar = 13.13M;
@@ -76,8 +70,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_IdAndArAreNulls_ShouldThrowArgumentNullException()
-		{
+		public void Calculate_IdAndArAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
 			decimal? id = null;
 			decimal? ar = null;
@@ -92,8 +85,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_IdAndOdAreNulls_ShouldThrowArgumentNullException()
-		{
+		public void Calculate_IdAndOdAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
 			decimal? id = null;
 			decimal? od = null;
@@ -108,8 +100,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_OdAndArAreNulls_ShouldThrowArgumentNullException()
-		{
+		public void Calculate_OdAndArAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
 			decimal? od = null;
 			decimal? ar = null;
@@ -124,8 +115,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_AllArgumentsAreNulls_ShouldThrowArgumentNullException()
-		{
+		public void Calculate_AllArgumentsAreNulls_ShouldThrowArgumentNullException() {
 			//Arrange
 			decimal? od = null;
 			decimal? ar = null;
@@ -139,8 +129,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_ArIsEqualZeroOdIsEqualNull_ShouldThrowDivideByZeroException()
-		{
+		public void Calculate_ArIsEqualZeroOdIsEqualNull_ShouldThrowDivideByZeroException() {
 			//Arrange
 			decimal? od = null;
 			decimal? ar = 0M;
@@ -153,8 +142,7 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_ArIsEqualMinusTwoAndIdIsNull_ShouldThrowDivideByZeroException()
-		{
+		public void Calculate_ArIsEqualMinusTwoAndIdIsNull_ShouldThrowDivideByZeroException() {
 			//Arrange
 			var ar = -2M;
 			decimal? id = null;
