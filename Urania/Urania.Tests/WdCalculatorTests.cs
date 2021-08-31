@@ -151,5 +151,20 @@ namespace Urania.Tests
 			//Assert
 			act.Should().Throw<DivideByZeroException>($"{nameof(ar)} cannot be 0");
 		}
+
+		[Test]
+		public void Calculate_ArIsEqualMinusTwoAndIdIsNull_ShouldThrowDivideByZeroException()
+		{
+			//Arrange
+			var ar = -2M;
+			decimal? id = null;
+			var od = 51.0969M;
+
+			//Act
+			Action act = () => WdCalculator.Calculate(id, ar, od);
+
+			//Assert
+			act.Should().Throw<DivideByZeroException>($"{nameof(ar)} cannot be equal -2");
+		}
 	}
 }

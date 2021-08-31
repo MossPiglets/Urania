@@ -15,6 +15,9 @@ namespace Urania.Core {
             }
 
             if (od != null && ar != null) {
+                if (ar == -2) {
+                    throw new DivideByZeroException($"{nameof(ar)} cannot be equal -2");
+                }
                 return (decimal)(od / (ar + 2));
             }
 
