@@ -139,12 +139,12 @@ namespace Urania.Tests
 		}
 
 		[Test]
-		public void Calculate_ArIsEqualZeroIdIsEqualNull_ShouldThrowDivideByZeroException()
+		public void Calculate_ArIsEqualZeroOdIsEqualNull_ShouldThrowDivideByZeroException()
 		{
 			//Arrange
-			decimal? od = 34.03M;
+			decimal? od = null;
 			decimal? ar = 0M;
-			decimal? id = null;
+			decimal? id = 34.03M;
 			//Act
 			Action act = () => WdCalculator.Calculate(id, ar, od);
 
