@@ -2,6 +2,7 @@
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                              xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                             xmlns:core="clr-namespace:Urania.Core.Data;assembly=Urania.Core"
                              x:Class="Urania.Desktop.MainWindow"
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -55,7 +56,7 @@
                     <StackPanel Orientation="Horizontal">
                         <RadioButton></RadioButton>
                         <TextBlock Text="SWG"/>
-                        <ComboBox></ComboBox>
+                        <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:SwgName}}}"></ComboBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">

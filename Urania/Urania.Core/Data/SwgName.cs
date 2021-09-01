@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 
 namespace Urania.Core.Data {
+    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
     public enum SwgName {
+        [Description(" ")]
         Unknown = 0,
         [Description("10")]
         Ten,
