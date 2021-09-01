@@ -1,29 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Markup;
 
 namespace Urania.Desktop
 {
-    public class EnumBindingSourceExtension : MarkupExtension
-    {
+    public class EnumBindingSourceExtension : MarkupExtension {
         private Type _enumType;
-        public Type EnumType
-        {
+        public Type EnumType {
             get { return this._enumType; }
-            set
-            {
-                if (value != this._enumType)
-                {
-                    if (null != value)
-                    {
+            set {
+                if (value != this._enumType) {
+                    if (null != value) {
                         Type enumType = Nullable.GetUnderlyingType(value) ?? value;
                         if (!enumType.IsEnum)
                             throw new ArgumentException("Type must be for an Enum.");
                     }
-
                     this._enumType = value;
                 }
             }
@@ -31,13 +21,11 @@ namespace Urania.Desktop
 
         public EnumBindingSourceExtension() { }
 
-        public EnumBindingSourceExtension(Type enumType)
-        {
+        public EnumBindingSourceExtension(Type enumType) {
             this.EnumType = enumType;
         }
 
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
+        public override object ProvideValue(IServiceProvider serviceProvider) {
             if (null == this._enumType)
                 throw new InvalidOperationException("The EnumType must be specified.");
 
