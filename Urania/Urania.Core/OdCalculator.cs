@@ -4,15 +4,14 @@ namespace Urania.Core {
     public class OdCalculator {
         public static decimal Calculate(decimal? ar, decimal? wd, decimal? id) {
 
-
             if (id < 0) {
-                throw new ArgumentOutOfRangeException($"{nameof(id)} cannot be less than 0");
+                throw new ArgumentOutOfRangeException(nameof(id), id, "Cannot be less than 0"); 
             }
             if (ar < 0) {
-                throw new ArgumentOutOfRangeException($"{nameof(ar)} cannot be less than 0");
+                throw new ArgumentOutOfRangeException(nameof(ar), ar, "Cannot be less than 0");
             }
             if (wd < 0) {
-                throw new ArgumentOutOfRangeException($"{nameof(wd)} cannot be less than 0");
+                throw new ArgumentOutOfRangeException(nameof(wd), wd, "Cannot be less than 0");
             }
 
             if (id != null && ar != null) {
@@ -27,7 +26,6 @@ namespace Urania.Core {
             if (wd != null && id != null) {
                 return (decimal)(id + 2 * wd);
             }
-
 
             if (ar != null && wd != null) {
                 return (decimal)(wd * (ar + 2));
