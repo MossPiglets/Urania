@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Markup;
 
-namespace Urania.Desktop
-{
+namespace Urania.Desktop {
     public class EnumBindingSourceExtension : MarkupExtension {
         private Type _enumType;
         public Type EnumType {
