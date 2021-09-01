@@ -180,7 +180,7 @@ namespace Urania.Tests {
 			Action act = () => WdCalculator.Calculate(id, ar, od);
 
 			//Assert
-			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(ar)} cannot be less than 0");
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(ar), ar, "Cannot be less than 0");
 		}
 		[Test]
 		public void Calculate_OdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
@@ -193,7 +193,7 @@ namespace Urania.Tests {
 			Action act = () => WdCalculator.Calculate(id, ar, od);
 
 			//Assert
-			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(od)} cannot be less than 0");
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od, "Cannot be less than 0");
 		}
 		[Test]
 		public void Calculate_IdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
@@ -206,7 +206,7 @@ namespace Urania.Tests {
 			Action act = () => WdCalculator.Calculate(id, ar, od);
 
 			//Assert
-			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(id)} cannot be less than 0");
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(id), id, "Cannot be less than 0");
 		}
 	}
 }
