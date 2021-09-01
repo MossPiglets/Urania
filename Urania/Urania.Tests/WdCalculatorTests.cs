@@ -142,20 +142,6 @@ namespace Urania.Tests {
 		}
 
 		[Test]
-		public void Calculate_ArIsEqualMinusTwoAndIdIsNull_ShouldThrowDivideByZeroException() {
-			//Arrange
-			var ar = -2M;
-			decimal? id = null;
-			var od = 51.0969M;
-
-			//Act
-			Action act = () => WdCalculator.Calculate(id, ar, od);
-
-			//Assert
-			act.Should().Throw<DivideByZeroException>($"{nameof(ar)} cannot be equal -2");
-		}
-
-		[Test]
 		public void Calculate_OdIsLessThanIdAndArIsNull_ShouldThrowArgumentOtOfRangeException() {
 			//Arrange
 			decimal? ar = null;
@@ -181,6 +167,46 @@ namespace Urania.Tests {
 
 			//Assert
 			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(od)} must be greater than {nameof(id)}");
+		}
+
+		[Test]
+		public void Calculate_ArIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var ar = -1M;
+			var id = 9.62M;
+			var od = 51.0969M;
+
+			//Act
+			Action act = () => WdCalculator.Calculate(id, ar, od);
+
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(ar)} cannot be less than 0");
+		}
+		[Test]
+		public void Calculate_OdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var ar = 5.31M;
+			var od = -1M;
+			var id = 51.0969M;
+
+			//Act
+			Action act = () => WdCalculator.Calculate(id, ar, od);
+
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(od)} cannot be less than 0");
+		}
+		[Test]
+		public void Calculate_IdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var ar = 5.31M;
+			var od = 9.62M;
+			var id = -1M;
+
+			//Act
+			Action act = () => WdCalculator.Calculate(id, ar, od);
+
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>($"{nameof(id)} cannot be less than 0");
 		}
 	}
 }

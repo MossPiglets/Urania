@@ -3,6 +3,15 @@
 namespace Urania.Core {
     public class WdCalculator {
         public static decimal Calculate(decimal? id, decimal? ar, decimal? od) {
+            if (id < 0) {
+                throw new ArgumentOutOfRangeException($"{nameof(id)} cannot be less than 0");
+            }
+            if (ar < 0) {
+                throw new ArgumentOutOfRangeException($"{nameof(ar)} cannot be less than 0");
+            }
+            if (od < 0) {
+                throw new ArgumentOutOfRangeException($"{nameof(od)} cannot be less than 0");
+            }
             if (id != null && ar != null) {
                 if (ar == 0) {
                     throw new DivideByZeroException($"{nameof(ar)} cannot be 0");
@@ -18,9 +27,6 @@ namespace Urania.Core {
             }
 
             if (od != null && ar != null) {
-                if (ar == -2) {
-                    throw new DivideByZeroException($"{nameof(ar)} cannot be equal -2");
-                }
                 return (decimal)(od / (ar + 2));
             }
 
