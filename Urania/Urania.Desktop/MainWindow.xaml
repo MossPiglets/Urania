@@ -1,27 +1,26 @@
 ﻿<adonisControls:AdonisWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                              xmlns:core="clr-namespace:Urania.Core.Data;assembly=Urania.Core"
+                             xmlns:desktop="clr-namespace:Urania.Desktop"
                              x:Class="Urania.Desktop.MainWindow"
-                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                                xmlns:local="clr-namespace:Urania.Desktop"
-                                mc:Ignorable="d"
-                                Title="MainWindow" Height="450" Width="800">
+                             mc:Ignorable="d"
+                             Title="Urania" Height="640" Width="500" ResizeMode="CanMinimize">
 
     <adonisControls:AdonisWindow.Style>
-        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </adonisControls:AdonisWindow.Style>
-    
+
     <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."  
-					   TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" >
-            </TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="50 40 50 20">
+            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."
+					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
+            <Image Source="/Assets/BruxaLogo.png" Width="75" Margin="20 0 0 0" />
         </StackPanel>
-        <TextBlock Text="Wpisz parametry lub wybierz z listy" HorizontalAlignment="Center"/>
-        <Grid>
+        <TextBlock Text="Wpisz parametry lub wybierz z listy" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" />
+        <Grid Margin="50 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -30,63 +29,61 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Border Name="LeftUpBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.Row="0">
+            <GroupBox Name="LeftUpBorderID" Header="ID (Średnica wewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="0"
+                    Margin="0 0 20 45">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
-                        <TextBox></TextBox>
-                        <TextBlock Text="mm"/>
+                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                        <RadioButton IsChecked="True" />
+                        <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" />
+                        <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
-                        <ComboBox></ComboBox>
-                        <TextBlock Text="cal"/>
+                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                        <RadioButton />
+                        <ComboBox Width="100" VerticalAlignment="Center" Margin="5 0" />
+                        <TextBlock Text="cal" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
-            </Border>
+            </GroupBox>
 
-            <Border Name="RightUpBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="0">
+            <GroupBox Name="RightUpBorderWD" Header="WD (Grubość drutu)" BorderThickness="1" Grid.Column="1" Grid.Row="0"
+                    Margin="20 0 0 10">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
-                        <TextBox></TextBox>
-                        <TextBlock Text="mm"/>
+                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                        <RadioButton IsChecked="True" />
+                        <TextBox Width="100" VerticalAlignment="Center"  Margin="5 0" />
+                        <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
-                        <TextBlock Text="SWG"/>
-                        <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:SwgName}}}"></ComboBox>
+                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                        <RadioButton/>
+                        <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
+                        <ComboBox Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"/>
+
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
-                        <TextBlock Text="AWG"/>
-                        <ComboBox></ComboBox>
+                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                        <RadioButton />
+                        <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
+                        <ComboBox Width="100" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
-            </Border>
+            </GroupBox>
 
-            <Border Name="LeftDownBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.Row="1">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox></TextBox>
-                        <TextBlock Text="mm"/>
-                    </StackPanel>
+            <GroupBox Name="LeftDownBorderOD" Header="OD (Średnica zewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="1"
+                    Margin="0 0 20 10">
+                <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" />
+                    <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
-            </Border>
+            </GroupBox>
 
-            <Border Name="RightDownBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="1">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox></TextBox>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-
+            <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
+                    Margin="20 0 0 10">
+                <TextBox Width="100" Margin="5 5" VerticalAlignment="Center" />
+            </GroupBox>
         </Grid>
 
-        <Button Content="Przelicz" HorizontalAlignment="Center"/>
-        <Button Content="Wyczyść" HorizontalAlignment="Center"/>
+        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="13" Margin="0 20" />
+        <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" />
     </StackPanel>
 </adonisControls:AdonisWindow>
