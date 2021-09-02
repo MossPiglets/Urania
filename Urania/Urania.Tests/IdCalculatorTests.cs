@@ -11,13 +11,13 @@ namespace Urania.Tests {
             var ar = 5.31M;
             var wd = 6.99M;
             var od = 51.0969M;
-            var expectingResult = ar * wd;
+            var expectedResult = ar * wd;
             
             //Act
             var result = IdCalculator.Calculate(ar, wd, od);
             
             //Assert
-            result.Should().Be(expectingResult);
+            result.Should().Be(expectedResult);
         }
 
         [Test]
@@ -26,13 +26,13 @@ namespace Urania.Tests {
             var ar = 5.31M;
             var wd = 6.99M;
             decimal? od = null;
-            var expectingResult = ar * wd;
+            var expectedResult = ar * wd;
 
             //Act
             var result = IdCalculator.Calculate(ar, wd, od);
 
             //Assert
-            result.Should().Be(expectingResult);
+            result.Should().Be(expectedResult);
         }
         [Test]
         public void Calculate_WdIsNull_ShouldReturnDecimal() {
@@ -40,13 +40,13 @@ namespace Urania.Tests {
             var ar = 5.31M;
             decimal? wd = null;
             var od = 51.0969M;
-            var expectingResult = ar * od / (2 + ar);
+            var expectedResult = ar * od / (2 + ar);
 
             //Act
             var result = IdCalculator.Calculate(ar, wd, od);
 
             //Assert
-            result.Should().Be(expectingResult);
+            result.Should().Be(expectedResult);
         }
         [Test]
         public void Calculate_ArIsNull_ShouldReturnDecimal() {
@@ -54,13 +54,13 @@ namespace Urania.Tests {
             decimal? ar = null;
             var wd = 6.99M;
             var od = 51.0969M;
-            var expectingResult = od - 2 * wd;
+            var expectedResult = od - 2 * wd;
             
             //Act
             var result = IdCalculator.Calculate(ar, wd, od);
             
             //Assert
-            result.Should().Be(expectingResult);
+            result.Should().Be(expectedResult);
         }
         [Test]
         public void Calculate_ArAndWdAreNulls_ShouldThrowArgumentNullException() {
@@ -119,17 +119,57 @@ namespace Urania.Tests {
                 (string.Empty, $"Values: {nameof(ar)} = {ar}, {nameof(wd)} = {wd}, {nameof(od)} = {od}");
         }
         [Test]
-        public void Calculate_ArIsEqualMinusTwoAndWdIsNull_ShouldThrowDivideByZeroException() {
+        public void Calculate_ArIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
             //Arrange
-            var ar = -2M;
-            decimal? wd = null;
+            var ar = -1M;
+            var wd = 6.99M;
             var od = 51.0969M;
 
             //Act
             Action act = () => IdCalculator.Calculate(ar, wd, od);
             
             //Assert
-            act.Should().Throw<DivideByZeroException>($"{nameof(ar)} cannot be equal -2");
+            act.Should().Throw<ArgumentOutOfRangeException>(nameof(ar), ar, $"{nameof(ar)} cannot be less than 0");
+        }
+        [Test]
+        public void Calculate_WdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+            //Arrange
+            var ar = 1M;
+            var wd = -6.99M;
+            var od = 51.0969M;
+
+            //Act
+            Action act = () => IdCalculator.Calculate(ar, wd, od);
+            
+            //Assert
+            act.Should().Throw<ArgumentOutOfRangeException>(nameof(wd), wd, $"{nameof(wd)} cannot be less than 0");
+        }
+        [Test]
+        public void Calculate_OdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+            //Arrange
+            var ar = 1M;
+            var wd = 6.99M;
+            var od = -51.0969M;
+
+            //Act
+            Action act = () => IdCalculator.Calculate(ar, wd, od);
+            
+            //Assert
+            act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od, $"{nameof(od)} cannot be less than 0");
+        }
+        [Test]
+        public void Calculate_OdTwiceLessThanWdAndArIsNull_ShouldThrowArgumentOutOfRangeException() {
+            //Arrange
+            decimal? ar = null;
+            var wd = 6M;
+            var od = 1.0969M;
+
+            //Act
+            Action act = () => IdCalculator.Calculate(ar, wd, od);
+            
+            //Assert
+            act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od,
+                $"{nameof(od)} cannot be twice as small as {nameof(wd)}");
         }
     }
 }
