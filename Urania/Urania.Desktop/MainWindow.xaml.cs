@@ -6,7 +6,7 @@ namespace Urania.Desktop {
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow {
-		public WdState WdState = WdState.Inch;
+		public WdState WdState { get; set; } = WdState.Inch;
 		public MainWindow() {
 			InitializeComponent();
 			this.DataContext = this;
