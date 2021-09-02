@@ -4,13 +4,13 @@ namespace Urania.Core {
     public class WdCalculator {
         public static decimal Calculate(decimal? id, decimal? ar, decimal? od) {
             if (id < 0) {
-                throw new ArgumentOutOfRangeException(nameof(id), id, "Cannot be less than 0");
+                throw new ArgumentOutOfRangeException(nameof(id), id, $"{nameof(id)} Cannot be less than 0");
             }
             if (ar < 0) {
-                throw new ArgumentOutOfRangeException(nameof(ar), ar, "Cannot be less than 0");
+                throw new ArgumentOutOfRangeException(nameof(ar), ar, $"{nameof(ar)} Cannot be less than 0");
             }
             if (od < 0) {
-                throw new ArgumentOutOfRangeException(nameof(od), od, "Cannot be less than 0");
+                throw new ArgumentOutOfRangeException(nameof(od), od, $"{nameof(od)} Cannot be less than 0");
             }
             if (id != null && ar != null) {
                 if (ar == 0) {
@@ -21,7 +21,7 @@ namespace Urania.Core {
 
             if (od != null && id != null) {
                 if (od <= id) {
-                    throw new ArgumentOutOfRangeException(nameof(ar), ar, $"must be greater than {nameof(id)}");
+                    throw new ArgumentOutOfRangeException(nameof(ar), ar, $"{nameof(ar)} must be greater than {nameof(id)}");
                 }
                 return (decimal)((od - id) / 2);
             }
