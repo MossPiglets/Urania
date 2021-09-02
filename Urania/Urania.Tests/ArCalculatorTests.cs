@@ -159,5 +159,72 @@ namespace Urania.Tests {
 			//Assert
 			act.Should().Throw<DivideByZeroException>($"{nameof(od)} cannot be equal {nameof(id)}");
 		}
+		[Test]
+		public void Calculate_IdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var id = -1M;
+			var wd = 6.99M;
+			var od = 51.0969M;
+
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+            
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(id), id, $"{nameof(id)} cannot be less than 0");
+		}
+		[Test]
+		public void Calculate_WdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var id = 1M;
+			var wd = -6.99M;
+			var od = 51.0969M;
+
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+            
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(wd), wd, $"{nameof(wd)} cannot be less than 0");
+		}
+		[Test]
+		public void Calculate_OdIsLessThanZero_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var id = 1M;
+			var wd = 6.99M;
+			var od = -51.0969M;
+
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+            
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od, $"{nameof(od)} cannot be less than 0");
+		}
+		[Test]
+		public void Calculate_OdTwiceLessThanWdAndArIsNull_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			decimal? id = null;
+			var wd = 6M;
+			var od = 1.0969M;
+
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+            
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od,
+				$"{nameof(od)} cannot be twice as small as {nameof(wd)}");
+		}
+		[Test]
+		public void Calculate_OdIsLessThanOd_ShouldThrowArgumentOutOfRangeException() {
+			//Arrange
+			var id = 6M;
+			decimal? wd = null;
+			var od = 1.0969M;
+
+			//Act
+			Action act = () => ArCalculator.Calculate(id, wd, od);
+            
+			//Assert
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od,
+				$"{nameof(od)} cannot be less than {nameof(id)}");
+		}
 	}
 }
