@@ -1,5 +1,5 @@
 ﻿namespace Urania.Core {
-    internal class WireParameters {
+    public class WireParameters {
         public int Wd { get; set; }
         public int Id { get; set; }
         public int Od { get; set; }
