@@ -62,7 +62,7 @@
                     <StackPanel Orientation="Horizontal">
                         <RadioButton></RadioButton>
                         <TextBlock Text="AWG"/>
-                        <ComboBox></ComboBox>
+                        <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:AwgName}}}"></ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Border>
