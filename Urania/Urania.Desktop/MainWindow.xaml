@@ -22,6 +22,9 @@
         </StackPanel>
         <TextBlock Text="Wpisz parametry lub wybierz z listy" HorizontalAlignment="Center"/>
         <Grid>
+            <Grid.Resources>
+                <local:EnumBooleanConverter x:Key="enumBooleanConverter" />
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -30,7 +33,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Border Name="LeftUpBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.Row="0">
+            <Border Name="IdBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.Row="0">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <RadioButton></RadioButton>
@@ -45,29 +48,29 @@
                 </StackPanel>
             </Border>
 
-            <Border Name="RightUpBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="0">
+            <Border Name="WdBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="0">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Inch}" Checked="ToggleButton_OnChecked"/>
                         <TextBox></TextBox>
                         <TextBlock Text="mm"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Swg}" Checked="ToggleButton_OnChecked"/>
                         <TextBlock Text="SWG"/>
                         <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:SwgName}}}"></ComboBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton></RadioButton>
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Awg}" Checked="ToggleButton_OnChecked"/>
                         <TextBlock Text="AWG"/>
                         <ComboBox></ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Border>
 
-            <Border Name="LeftDownBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.Row="1">
+            <Border Name="OdBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.Row="1">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBox></TextBox>
@@ -76,7 +79,7 @@
                 </StackPanel>
             </Border>
 
-            <Border Name="RightDownBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="1">
+            <Border Name="ArBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="1">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBox></TextBox>
