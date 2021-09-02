@@ -21,7 +21,7 @@ namespace Urania.Core {
 
             if (od != null && id != null) {
                 if (od <= id) {
-                    throw new ArgumentOutOfRangeException($"{nameof(od)} must be greater than {nameof(id)}");
+                    throw new ArgumentOutOfRangeException(nameof(ar), ar, $"must be greater than {nameof(id)}");
                 }
                 return (decimal)((od - id) / 2);
             }
