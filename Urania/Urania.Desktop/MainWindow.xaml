@@ -7,6 +7,7 @@
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                                 xmlns:local="clr-namespace:Urania.Desktop"
+                                xmlns:src="clr-namespace:Urania.Desktop.States"
                                 mc:Ignorable="d"
                                 Title="MainWindow" Height="450" Width="800">
 
@@ -22,9 +23,6 @@
         </StackPanel>
         <TextBlock Text="Wpisz parametry lub wybierz z listy" HorizontalAlignment="Center"/>
         <Grid>
-            <Grid.Resources>
-                <local:EnumBooleanConverter x:Key="enumBooleanConverter" />
-            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -50,20 +48,23 @@
 
             <Border Name="WdBorder" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="1" Grid.Row="0">
                 <StackPanel>
+                    <StackPanel.Resources>          
+                        <local:ComparisonConverter x:Key="ComparisonConverter" />          
+                    </StackPanel.Resources>
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Inch}" Checked="ToggleButton_OnChecked"/>
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Inch}}" />
                         <TextBox></TextBox>
                         <TextBlock Text="mm"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Swg}" Checked="ToggleButton_OnChecked"/>
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" />
                         <TextBlock Text="SWG"/>
                         <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:SwgName}}}"></ComboBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Awg}" Checked="ToggleButton_OnChecked"/>
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" />
                         <TextBlock Text="AWG"/>
                         <ComboBox></ComboBox>
                     </StackPanel>

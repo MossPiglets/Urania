@@ -11,9 +11,5 @@ namespace Urania.Desktop {
 			InitializeComponent();
 			this.DataContext = this;
 		}
-
-		private void ToggleButton_OnChecked(object sender, RoutedEventArgs e) {
-			MessageBox.Show(string.Format($"wdState: {WdState}"));
-		}
 	}
 }
