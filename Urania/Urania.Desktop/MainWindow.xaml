@@ -34,7 +34,7 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5 5">
                         <RadioButton IsChecked="True" />
-                        <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding Id}"/>
+                        <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}"/>
 
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
@@ -51,7 +51,7 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5 5">
                         <RadioButton IsChecked="True" />
-                        <TextBox Width="100" VerticalAlignment="Center"  Margin="5 0" Text="{Binding Wd}"/>
+                        <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"/> 
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
 
@@ -72,18 +72,18 @@
             <GroupBox Name="LeftDownBorderOD" Header="OD (Średnica zewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="1"
                     Margin="0 0 20 10">
                 <StackPanel Orientation="Horizontal" Margin="5 5">
-                    <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding Od}"/>
+                    <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Mode=TwoWay}"/>
                     <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
             </GroupBox>
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
                     Margin="20 0 0 10">
-                <TextBox Width="100" Margin="5 5" VerticalAlignment="Center" Text="{Binding Ar}"/>
+                <TextBox Width="100" Margin="5 5" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"/>
             </GroupBox>
         </Grid>
 
-        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="13" Margin="0 20" Click="Button_Click"/>
+        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="13" Margin="0 20"/>
         <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" />
     </StackPanel>
 </adonisControls:AdonisWindow>
