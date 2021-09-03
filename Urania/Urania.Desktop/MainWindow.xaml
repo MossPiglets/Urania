@@ -29,6 +29,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+          
             <GroupBox Name="LeftUpBorderID" Header="ID (Średnica wewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="0"
                     Margin="0 0 20 45">
                 <StackPanel>
