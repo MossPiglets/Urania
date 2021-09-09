@@ -9,17 +9,17 @@
                              xmlns:local="clr-namespace:Urania.Desktop"
                              xmlns:src="clr-namespace:Urania.Desktop.States"
                              mc:Ignorable="d"
-                             Title="Urania" Height="640" Width="500" ResizeMode="CanMinimize">
+                             Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
 
     <adonisControls:AdonisWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </adonisControls:AdonisWindow.Style>
 
     <StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="50 40 50 20">
+        <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
             <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."
 					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
-            <Image Source="Assets/BruxaLogo.png" Width="75" Margin="20 0 0 0" />
+            <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>
         <TextBlock Text="Wpisz parametry lub wybierz z listy" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" />
         <Grid Margin="50 0">
@@ -38,12 +38,12 @@
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
                     </StackPanel.Resources>
-                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <StackPanel Orientation="Horizontal" Margin="10 5 5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"/>
                         <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}"/>
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}}"/>
                         <ComboBox Width="100" VerticalAlignment="Center" Margin="5 0" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:InchName}}}" />
                         <TextBlock Text="cal" VerticalAlignment="Center" />
@@ -56,19 +56,19 @@
                     <StackPanel.Resources>          
                         <local:ComparisonConverter x:Key="ComparisonConverter" />          
                     </StackPanel.Resources>
-                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <StackPanel Orientation="Horizontal" Margin="0 5 5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Inch}}" />
                         <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"/> 
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" />
                         <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
                         <ComboBox Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="5 5">
+                    <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" />
                         <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
                         <ComboBox Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"/>
@@ -77,7 +77,7 @@
             </GroupBox>
             <GroupBox Name="LeftDownBorderOD" Header="OD (Średnica zewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="1"
                       Margin="0 0 20 10">
-                <StackPanel Orientation="Horizontal" Margin="5 5">
+                <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                     <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Mode=TwoWay}"/>
                     <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
@@ -85,7 +85,7 @@
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
                     Margin="20 0 0 10">
-                <TextBox Width="100" Margin="5 5" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"/>
+                <TextBox Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"/>
             </GroupBox>
         </Grid>
 
