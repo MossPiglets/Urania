@@ -15,5 +15,15 @@ namespace Urania.Desktop {
             InitializeComponent();
             this.DataContext = this;
         }
+
+        private void CleanButton_Click(object sender, System.Windows.RoutedEventArgs e) {
+            WdTextBox.Text = null;
+            IdTextBox.Text = null;
+            OdTextBox.Text = null;
+            ArTextBox.Text = null;
+            IdCalComboBox.Text = null;
+            WdSWGComboBox.Text = null;
+            WdAWGComboBox.Text = null;
+        }
     }
 }
