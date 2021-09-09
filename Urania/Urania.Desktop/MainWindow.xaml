@@ -89,7 +89,7 @@
             </GroupBox>
         </Grid>
 
-        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="13" Margin="0 20"/>
+        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20"/>
         <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" />
     </StackPanel>
 </adonisControls:AdonisWindow>
