@@ -68,7 +68,7 @@
                     <StackPanel Orientation="Horizontal" Margin="5 5">
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" />
                         <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
-                        <ComboBox Width="100" VerticalAlignment="Center" />
+                        <ComboBox Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
