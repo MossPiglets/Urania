@@ -24,6 +24,8 @@ namespace Urania.Desktop {
             IdCalComboBox.Text = null;
             WdSWGComboBox.Text = null;
             WdAWGComboBox.Text = null;
+            IdMmRadiobutton.IsChecked = true;
+            WdMmRadiobutton.IsChecked = true;
         }
     }
 }

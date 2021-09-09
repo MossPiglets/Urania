@@ -39,7 +39,7 @@
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
                     </StackPanel.Resources>
                     <StackPanel Orientation="Horizontal" Margin="5 5">
-                        <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"/>
+                        <RadioButton x:Name="IdMmRadiobutton" GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"/>
                         <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}"/>
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
@@ -57,7 +57,7 @@
                         <local:ComparisonConverter x:Key="ComparisonConverter" />          
                     </StackPanel.Resources>
                     <StackPanel Orientation="Horizontal" Margin="5 5">
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Inch}}" />
+                        <RadioButton x:Name="WdMmRadiobutton" GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Inch}}" />
                         <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"/> 
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
