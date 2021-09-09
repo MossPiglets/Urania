@@ -45,7 +45,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5 5">
                         <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}}"/>
-                        <ComboBox Width="100" VerticalAlignment="Center" Margin="5 0" />
+                        <ComboBox Width="100" VerticalAlignment="Center" Margin="5 0" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:InchName}}}" />
                         <TextBlock Text="cal" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
