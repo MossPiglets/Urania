@@ -30,17 +30,17 @@ namespace Urania.Desktop {
 
 			Type actualEnumType = Nullable.GetUnderlyingType(this._enumType) ?? this._enumType;
 			Array enumValues = Enum.GetValues(actualEnumType);
+			
+            var filteredEnumValues = Array.CreateInstance(actualEnumType, enumValues.Length - 1);
+            // skip first value
+            for (int i = 0; i < enumValues.Length; i++) {
+                var value = ((Enum)enumValues.GetValue(i)).ToString();
+                if (value == "Unknown") continue;
+                filteredEnumValues.SetValue(enumValues.GetValue(i), i - 1);
+            }
 
-			var filteredEnumValues = Array.CreateInstance(actualEnumType, enumValues.Length - 1);
-			// skip first value
-			for (int i = 0; i < enumValues.Length; i++) {
-				var value = ((Enum) enumValues.GetValue(i)).ToString();
-				if (value == "Unknown") continue;
-				filteredEnumValues.SetValue(enumValues.GetValue(i), i - 1);
-			}
-            
-			if (actualEnumType == this._enumType)
-				return filteredEnumValues;
+            if (actualEnumType == this._enumType)
+                return filteredEnumValues;
 
 			Array tempArray = Array.CreateInstance(actualEnumType, filteredEnumValues.Length + 1);
 			filteredEnumValues.CopyTo(tempArray, 1);
