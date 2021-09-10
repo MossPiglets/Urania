@@ -17,13 +17,13 @@ namespace Urania.Desktop {
         }
 
         private void CleanButton_Click(object sender, System.Windows.RoutedEventArgs e) {
-            WdTextBox.Text = null;
-            IdTextBox.Text = null;
-            OdTextBox.Text = null;
-            ArTextBox.Text = null;
-            IdCalComboBox.Text = null;
-            WdSWGComboBox.Text = null;
-            WdAWGComboBox.Text = null;
+            WireParameters.Wd = null;
+            WireParameters.Id = null;
+            WireParameters.Od = null;
+            WireParameters.Ar = null;
+            IdCalComboBox.SelectedIndex = -1;
+            WdSWGComboBox.SelectedIndex = -1;
+            WdAWGComboBox.SelectedIndex = -1;
             IdMmRadiobutton.IsChecked = true;
             WdMmRadiobutton.IsChecked = true;
         }
