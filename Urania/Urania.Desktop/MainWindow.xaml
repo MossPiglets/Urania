@@ -57,7 +57,7 @@
                         <local:ComparisonConverter x:Key="ComparisonConverter" />          
                     </StackPanel.Resources>
                     <StackPanel Orientation="Horizontal" Margin="0 5 5 5" HorizontalAlignment="Center" >
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Inch}}" />
+                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}" />
                         <TextBox Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"/> 
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
