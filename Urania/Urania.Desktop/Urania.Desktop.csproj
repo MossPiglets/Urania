@@ -7,12 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\BruxaLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AdonisUI.ClassicTheme.NET5" Version="1.17.1" />
     <PackageReference Include="AdonisUI.NET5" Version="1.17.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Urania.Core\Urania.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\BruxaLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
