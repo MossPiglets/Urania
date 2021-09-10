@@ -9,14 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Remove="Resources\**" />
     <EmbeddedResource Remove="Resources\**" />
     <None Remove="Resources\**" />
     <Page Remove="Resources\**" />
-=======
-    <None Remove="Resources\BruxaLogo.png" />
->>>>>>> 20a6f88083beb87790a8654c479d70ea1f760713
   </ItemGroup>
 
   <ItemGroup>
