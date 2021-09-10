@@ -7,7 +7,7 @@ namespace Urania.Desktop {
     /// </summary>
     public partial class MainWindow {
         public WireParameters WireParameters { get; set; } = new WireParameters();
-        public WdState WdState { get; set; } = WdState.Inch;
+        public WdState WdState { get; set; } = WdState.Millimeter;
         public IdState IdState { get; set; } = IdState.Millimeter;
 
 

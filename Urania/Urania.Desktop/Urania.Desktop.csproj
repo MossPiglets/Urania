@@ -9,10 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Remove="Resources\**" />
     <EmbeddedResource Remove="Resources\**" />
     <None Remove="Resources\**" />
     <Page Remove="Resources\**" />
+=======
+    <None Remove="Resources\BruxaLogo.png" />
+>>>>>>> 20a6f88083beb87790a8654c479d70ea1f760713
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +26,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Urania.Core\Urania.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\BruxaLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
