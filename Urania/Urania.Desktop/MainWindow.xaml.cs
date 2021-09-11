@@ -10,7 +10,6 @@ namespace Urania.Desktop {
         public WdState WdState { get; set; } = WdState.Millimeter;
         public IdState IdState { get; set; } = IdState.Millimeter;
 
-
         public MainWindow() {
             InitializeComponent();
             this.DataContext = this;
