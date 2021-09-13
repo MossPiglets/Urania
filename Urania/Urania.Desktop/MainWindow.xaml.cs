@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
@@ -32,16 +33,7 @@ namespace Urania.Desktop {
             WdMmRadiobutton.IsChecked = true;
         }
 
-        private void WdSWGComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
-            WireParameters.Wd = GetValueFromDictionary<SwgName>(e.AddedItems);
-
-        private decimal GetValueFromDictionary<T>(IList list) {
-            if (list.Count != 0) {
-                return Swg.Values.Where(a => a.Key == (SwgName) list[0])
-                    .Select(a => a.Value).ToList()[0];
-            }
-
-            return 0M;
-        }
+        private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
+            WireParameters.Wd = Swg.Values[(SwgName) e.AddedItems[0]];
     }
 }

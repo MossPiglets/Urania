@@ -67,7 +67,7 @@
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" />
                         <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
                         <ComboBox x:Name="WdSWGComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
-                                  SelectionChanged="WdSWGComboBox_OnSelectionChanged"/>
+                                  SelectionChanged="WdSwgComboBox_OnSelectionChanged"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
