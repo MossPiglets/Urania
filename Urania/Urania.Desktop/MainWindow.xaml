@@ -70,15 +70,17 @@
                     <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" />
                         <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
-                        <ComboBox x:Name="WdSWGComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
-                                  SelectionChanged="WdSwgComboBox_OnSelectionChanged" IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
+                                  SelectionChanged="WdSwgComboBox_OnSelectionChanged"
+                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" />
                         <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
-                        <ComboBox x:Name="WdAWGComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
-                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ComboBox x:Name="WdAwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
+                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
