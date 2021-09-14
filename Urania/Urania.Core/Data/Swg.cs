@@ -2,7 +2,7 @@
 
 namespace Urania.Core.Data {
     public class Swg {
-        public Dictionary<SwgName, decimal> Values = new Dictionary<SwgName, decimal> {
+        public static Dictionary<SwgName, decimal> Values = new Dictionary<SwgName, decimal> {
             [SwgName.Ten] = 3.25M,
             [SwgName.Eleven] = 2.95M,
             [SwgName.Twelve] = 2.64M,

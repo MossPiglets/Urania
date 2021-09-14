@@ -2,7 +2,7 @@
 
 namespace Urania.Core.Data {
     public class Inch {
-        public Dictionary<InchName, decimal> Values = new Dictionary<InchName, decimal> {
+        public static Dictionary<InchName, decimal> Values = new Dictionary<InchName, decimal> {
             [InchName.OneThirtySecond] = 0.79M,
             [InchName.OneSixteenth] = 1.59M,
             [InchName.ThreeThirtySecond] = 2.38M,

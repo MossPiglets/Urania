@@ -1,5 +1,11 @@
-﻿using Urania.Desktop.States;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
+using Urania.Desktop.States;
 using Urania.Core;
+using Urania.Core.Data;
 
 namespace Urania.Desktop {
     /// <summary>
@@ -26,5 +32,8 @@ namespace Urania.Desktop {
             IdMmRadiobutton.IsChecked = true;
             WdMmRadiobutton.IsChecked = true;
         }
+
+        private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
+            WireParameters.Wd = Swg.Values[(SwgName) e.AddedItems[0]];
     }
 }
