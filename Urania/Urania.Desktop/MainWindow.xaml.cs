@@ -27,8 +27,8 @@ namespace Urania.Desktop {
             WireParameters.Od = null;
             WireParameters.Ar = null;
             IdCalComboBox.SelectedIndex = -1;
-            WdSWGComboBox.SelectedIndex = -1;
-            WdAWGComboBox.SelectedIndex = -1;
+            WdSwgComboBox.SelectedIndex = -1;
+            WdAwgComboBox.SelectedIndex = -1;
             IdMmRadiobutton.IsChecked = true;
             WdMmRadiobutton.IsChecked = true;
         }
@@ -38,5 +38,8 @@ namespace Urania.Desktop {
 
         private void IdInchComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
             WireParameters.Id = Inch.Values[(InchName) e.AddedItems[0]];
+        
+        private void WdAwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
+            WireParameters.Wd = Awg.Values[(AwgName) e.AddedItems[0]];
     }
 }
