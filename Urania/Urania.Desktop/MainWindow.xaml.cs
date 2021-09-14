@@ -35,5 +35,8 @@ namespace Urania.Desktop {
 
         private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
             WireParameters.Wd = Swg.Values[(SwgName) e.AddedItems[0]];
+
+        private void IdInchComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
+            WireParameters.Id = Inch.Values[(InchName) e.AddedItems[0]];
     }
 }
