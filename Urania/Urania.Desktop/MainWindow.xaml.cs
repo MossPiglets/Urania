@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Urania.Desktop.States;
 using Urania.Core;
 using Urania.Core.Data;
@@ -41,5 +37,6 @@ namespace Urania.Desktop {
         
         private void WdAwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
             WireParameters.Wd = Awg.Values[(AwgName) e.AddedItems[0]];
+        
     }
 }
