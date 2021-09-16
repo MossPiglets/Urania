@@ -8,12 +8,23 @@
                              x:Class="Urania.Desktop.MainWindow"
                              xmlns:local="clr-namespace:Urania.Desktop"
                              xmlns:src="clr-namespace:Urania.Desktop.States"
+                             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
                              mc:Ignorable="d"
                              Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
 
     <adonisControls:AdonisWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </adonisControls:AdonisWindow.Style>
+    
+    <adonisControls:AdonisWindow.TitleBarContent>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Content="?"
+                    Style="{DynamicResource {x:Static adonisUi:Styles.WindowButton}}"
+                    FontFamily="Segoe UI"
+                    FontSize="14"/>
+        </StackPanel>
+    </adonisControls:AdonisWindow.TitleBarContent>
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
