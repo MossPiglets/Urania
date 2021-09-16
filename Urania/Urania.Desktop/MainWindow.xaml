@@ -48,7 +48,8 @@
                     <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}}"/>
                         <ComboBox x:Name="IdCalComboBox" Width="100" VerticalAlignment="Center" Margin="5 0" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:InchName}}}" 
-                                  IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}, UpdateSourceTrigger=PropertyChanged}"/>
+                                  IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectionChanged="IdInchComboBox_OnSelectionChanged"/>
                         <TextBlock Text="cal" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
