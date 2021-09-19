@@ -56,14 +56,15 @@
                         <RadioButton x:Name="IdMmRadiobutton" GroupName="Id" 
                                      IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"/>
                         <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}" 
-                                 IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"/>
+                                 IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
+                                 ToolTip="Wpisz odpowiednią wartość wewnętrznej średnicy w milimetrach"/>
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                         <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}}"/>
                         <ComboBox x:Name="IdCalComboBox" Width="100" VerticalAlignment="Center" Margin="5 0" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:InchName}}}" 
                                   IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectionChanged="IdInchComboBox_OnSelectionChanged"/>
+                                  SelectionChanged="IdInchComboBox_OnSelectionChanged" ToolTip="Wybierz z listy wartość w calach"/>
                         <TextBlock Text="cal" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
@@ -78,7 +79,8 @@
                     <StackPanel Orientation="Horizontal" Margin="0 5 5 5" HorizontalAlignment="Center" >
                         <RadioButton x:Name="WdMmRadiobutton" GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}" />
                         <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"
-                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"/>
+                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
+                                 ToolTip="Wpisz odpowiednią wartość grubości drutu w milimetrach" />
                         <TextBlock Text="mm" VerticalAlignment="Center" />
                     </StackPanel>
 
@@ -87,7 +89,8 @@
                         <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
                         <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
                                   SelectionChanged="WdSwgComboBox_OnSelectionChanged"
-                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
+                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"
+                                  ToolTip="Wybierz z listy wartość SWG"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
@@ -95,7 +98,7 @@
                         <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
                         <ComboBox x:Name="WdAwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
                                   IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
+                                  SelectionChanged="WdAwgComboBox_OnSelectionChanged" ToolTip="Wybierz z listy wartość AWG"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -103,18 +106,20 @@
                       Margin="0 0 20 10">
 
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Mode=TwoWay}"/>
+                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Mode=TwoWay}"
+                             ToolTip="Wpisz odpowiednią wartość zewnętrznej średnicy w milimetrach"/>
                     <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
             </GroupBox>
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
                     Margin="20 0 0 10">
-                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"/>
+                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"
+                         ToolTip="Wpisz odpowiednią wartość współczynnika proporcji"/>
             </GroupBox>
         </Grid>
 
-        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20"/>
-        <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click"/>
+        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" ToolTip="Liczy brakujące parametry"/>
+        <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
     </StackPanel>
 </adonisControls:AdonisWindow>
