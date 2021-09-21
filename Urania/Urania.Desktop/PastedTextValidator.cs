@@ -6,7 +6,8 @@ namespace Urania.Desktop {
         public static void AllowPastOnlyNumbers(DataObjectPastingEventArgs e) {
             if (e.DataObject.GetDataPresent(typeof(string))) {
                 string text = (string)e.DataObject.GetData(typeof(string));
-                if (text.Any(a => !char.IsDigit(a))) {
+                //if (text.Any(a => !char.IsDigit(a))) {
+                if (decimal.TryParse(text, out _)) { 
                     e.CancelCommand();
                 }
                 else {
