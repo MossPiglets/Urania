@@ -2,6 +2,10 @@
 using Urania.Desktop.States;
 using Urania.Core;
 using Urania.Core.Data;
+using System.Windows.Input;
+using System.Windows;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Urania.Desktop {
     /// <summary>
@@ -37,6 +41,12 @@ namespace Urania.Desktop {
         
         private void WdAwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
             WireParameters.Wd = Awg.Values[(AwgName) e.AddedItems[0]];
-        
+
+        private void AllowOnlyNumbers(object sender, TextCompositionEventArgs e) {
+            e.Handled = e.Text.Any(a => !char.IsDigit(a));
+        }
+        private void AllowPastOnlyNumbers(object sender, DataObjectPastingEventArgs e) {
+            PastedTextValidator.AllowPastOnlyNumbers(e);
+        }
     }
 }
