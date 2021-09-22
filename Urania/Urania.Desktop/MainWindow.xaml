@@ -118,8 +118,9 @@
                          ToolTip="Wpisz odpowiednią wartość współczynnika proporcji"/>
             </GroupBox>
         </Grid>
-
-        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" ToolTip="Liczy brakujące parametry"/>
+        
+        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="ButtonCalculate_OnClick" ToolTip="Liczy brakujące parametry"/>
         <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
+        
     </StackPanel>
 </adonisControls:AdonisWindow>
