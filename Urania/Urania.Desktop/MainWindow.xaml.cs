@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using Urania.Desktop.States;
+using System.Windows.Input;
 using Urania.Core;
 using Urania.Core.Data;
-using System.Windows.Input;
-using System.Windows;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Globalization;
+using Urania.Desktop.States;
 
 namespace Urania.Desktop {
     /// <summary>
