@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using Urania.Desktop.States;
 using Urania.Core;
 using Urania.Core.Data;
@@ -37,6 +39,23 @@ namespace Urania.Desktop {
         
         private void WdAwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) =>
             WireParameters.Wd = Awg.Values[(AwgName) e.AddedItems[0]];
-        
+
+        private void ButtonCalculate_OnClick(object sender, RoutedEventArgs e) {
+            if (WireParameters.Wd == null) {
+                WireParameters.Wd = Math.Round(WdCalculator.Calculate(WireParameters.Id, WireParameters.Ar, WireParameters.Od), 2) ;
+            }
+
+            if (WireParameters.Ar == null) {
+                WireParameters.Ar = Math.Round(ArCalculator.Calculate(WireParameters.Id, WireParameters.Wd, WireParameters.Od), 2);
+            }
+
+            if (WireParameters.Id == null) {
+                WireParameters.Id = Math.Round(IdCalculator.Calculate(WireParameters.Ar, WireParameters.Wd, WireParameters.Od), 2);
+            }
+
+            if (WireParameters.Od == null) {
+                WireParameters.Od = Math.Round(OdCalculator.Calculate(WireParameters.Ar, WireParameters.Wd, WireParameters.Id), 2);
+            }
+        }
     }
 }
