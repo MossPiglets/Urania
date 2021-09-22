@@ -52,20 +52,24 @@
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
                     </StackPanel.Resources>
-                    <StackPanel Orientation="Horizontal" Margin="10 5 5 5" HorizontalAlignment="Center">
-                        <RadioButton x:Name="IdMmRadiobutton" GroupName="Id" 
-                                     IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"/>
-                        <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}" 
-                                 IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="mm" VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                        <RadioButton GroupName="Id" IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}}"/>
-                        <ComboBox x:Name="IdCalComboBox" Width="100" VerticalAlignment="Center" Margin="5 0" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:InchName}}}" 
-                                  IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectionChanged="IdInchComboBox_OnSelectionChanged"/>
-                        <TextBlock Text="cal" VerticalAlignment="Center" />
-                    </StackPanel>
+                    <RadioButton x:Name="IdMmRadiobutton" GroupName="Id" Margin="10 5 5 5" HorizontalAlignment="Center"
+                                    IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"
+                                    Checked="IdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}" 
+                                            IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="mm" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton GroupName="Id" Margin="5 5" HorizontalAlignment="Center"
+                                 IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}}">
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox x:Name="IdCalComboBox" Width="100" VerticalAlignment="Center" Margin="5 0" ItemsSource="{Binding Source={local:EnumBindingSource {x:Type core:InchName}}}" 
+                                IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="IdInchComboBox_OnSelectionChanged"/>
+                            <TextBlock Text="cal" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
             </GroupBox>
             <GroupBox Name="RightUpBorderWD" Header="WD (Grubość drutu)" BorderThickness="1" Grid.Column="1" Grid.Row="0"
@@ -75,28 +79,37 @@
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
                     </StackPanel.Resources>
 
-                    <StackPanel Orientation="Horizontal" Margin="0 5 5 5" HorizontalAlignment="Center" >
-                        <RadioButton x:Name="WdMmRadiobutton" GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}" />
-                        <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"
-                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock Text="mm" VerticalAlignment="Center" />
-                    </StackPanel>
+                    <RadioButton x:Name="WdMmRadiobutton" GroupName="Wd" Margin="0 5 5 5" HorizontalAlignment="Center"
+                                     IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}"
+                                     Checked="WdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"
+                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock Text="mm" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </RadioButton>
 
-                    <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" />
-                        <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
-                        <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
-                                  SelectionChanged="WdSwgComboBox_OnSelectionChanged"
-                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
-                    </StackPanel>
+                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}"
+                                 Checked="WdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
+                            <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
+                                SelectionChanged="WdSwgComboBox_OnSelectionChanged"
+                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </RadioButton>
 
-                    <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                        <RadioButton GroupName="Wd" IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" />
-                        <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
-                        <ComboBox x:Name="WdAwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
-                                  IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
-                    </StackPanel>
+                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" 
+                                 Checked="WdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
+                            <ComboBox x:Name="WdAwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
+                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
             </GroupBox>
             <GroupBox Name="LeftDownBorderOD" Header="OD (Średnica zewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="1"
