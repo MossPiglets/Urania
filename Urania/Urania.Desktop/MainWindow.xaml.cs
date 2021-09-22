@@ -61,7 +61,7 @@ namespace Urania.Desktop {
         }
 
         private void IdMmRadiobutton_Checked(object sender, RoutedEventArgs e) {
-            IdCalComboBox.SelectedItem = null;
+            IdCalComboBox.SelectedItem = -1;
         }
 
         private void WdMmRadiobutton_Checked(object sender, RoutedEventArgs e) {
