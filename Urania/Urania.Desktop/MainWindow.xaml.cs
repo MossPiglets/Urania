@@ -43,8 +43,10 @@ namespace Urania.Desktop {
             WireParameters.Wd = Awg.Values[(AwgName) e.AddedItems[0]];
 
         private void AllowOnlyNumbers(object sender, TextCompositionEventArgs e) {
-            //e.Handled = e.Text.Any(a => !char.IsDigit(a));
-            //e.Handled = decimal.TryParse(e.Text, out _);
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+            text += e.Text;
+            e.Handled = !decimal.TryParse(text, out _);
         }
         private void AllowPastOnlyNumbers(object sender, DataObjectPastingEventArgs e) {
             PastedTextValidator.AllowPastOnlyNumbers(e);
