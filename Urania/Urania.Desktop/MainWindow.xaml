@@ -52,6 +52,7 @@
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
                     </StackPanel.Resources>
+
                     <RadioButton x:Name="IdMmRadiobutton" GroupName="Id" Margin="10 5 5 5" HorizontalAlignment="Center"
                                     IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"
                                     Checked="IdMmRadiobutton_Checked">
@@ -117,7 +118,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                     <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Mode=TwoWay}"
-                         PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
+                             ToolTip="Wpisz odpowiednią wartość zewnętrznej średnicy w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                     <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
             </GroupBox>
@@ -125,11 +126,12 @@
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
                     Margin="20 0 0 10">
                 <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"
-                         PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
+                         ToolTip="Wpisz odpowiednią wartość współczynnika proporcji" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
             </GroupBox>
         </Grid>
-
-        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="ButtonCalculate_OnClick"/>
-        <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click"/>
+        
+        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="ButtonCalculate_OnClick" ToolTip="Liczy brakujące parametry"/>
+        <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
+        
     </StackPanel>
 </adonisControls:AdonisWindow>
