@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
@@ -8,7 +9,6 @@ using Urania.Desktop.States;
 namespace Urania.Desktop {
     public partial class MainWindow {
         MainViewModel MainViewModel { get; set; } = new MainViewModel();
-       
         public MainWindow() {
             InitializeComponent();
             this.DataContext = MainViewModel;
@@ -42,6 +42,15 @@ namespace Urania.Desktop {
             }
         }
 
+        private void AllowOnlyNumbers(object sender, TextCompositionEventArgs e) {
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+            text += e.Text;
+            e.Handled = !decimal.TryParse(text, out _);
+        }
+        private void AllowPastOnlyNumbers(object sender, DataObjectPastingEventArgs e) {
+            PastedTextValidator.AllowPastOnlyNumbers(e);
+        }
         private void ButtonCalculate_OnClick(object sender, RoutedEventArgs e) {
             if (MainViewModel.WireParameters.Wd == null) {
                 MainViewModel.WireParameters.Wd = Math.Round(WdCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Od), 2) ;
@@ -68,6 +77,5 @@ namespace Urania.Desktop {
             WdSwgComboBox.SelectedIndex = -1;
             WdAwgComboBox.SelectedIndex = -1;
         }
-
     }
 }
