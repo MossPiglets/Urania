@@ -57,7 +57,7 @@
                                     IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"
                                     Checked="IdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Mode=TwoWay}" 
+                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay }" 
                                             IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
                                             PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" />
@@ -84,7 +84,7 @@
                                      IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}"
                                      Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay}"
+                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
                                 PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" />
@@ -117,7 +117,7 @@
                       Margin="0 0 20 10">
 
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Mode=TwoWay}"
+                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}"
                              ToolTip="Wpisz odpowiednią wartość zewnętrznej średnicy w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                     <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
@@ -125,7 +125,7 @@
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
                     Margin="20 0 0 10">
-                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Mode=TwoWay}"
+                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay }"
                          ToolTip="Wpisz odpowiednią wartość współczynnika proporcji" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
             </GroupBox>
         </Grid>
