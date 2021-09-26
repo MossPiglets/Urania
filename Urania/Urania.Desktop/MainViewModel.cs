@@ -10,11 +10,9 @@ namespace Urania.Desktop {
     public class MainViewModel : INotifyPropertyChanged {
         private WdState _wdState;
         private IdState _idState;
-        private WireParametersValidator _wireParametersValidator;
 
         public MainViewModel() {
             WireParameters.PropertyChanged += (sender, args) => OnPropertyChanged(nameof(WireParameters));
-            _wireParametersValidator = new WireParametersValidator();
         }
 
         public WireParameters WireParameters { get; set; } = new WireParameters();

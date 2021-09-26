@@ -6,12 +6,12 @@ using System.Windows.Documents;
 
 namespace Urania.Desktop {
     public class WireParameters : INotifyPropertyChanged, IDataErrorInfo {
-
         private decimal? _wd;
         private decimal? _od;
         private decimal? _id;
         private decimal? _ar;
         private WireParametersValidator _wireParametersValidator;
+
         public decimal? Wd {
             get => _wd;
             set {
@@ -27,6 +27,7 @@ namespace Urania.Desktop {
                 OnPropertyChanged(nameof(Id));
             }
         }
+
         public decimal? Od {
             get => _od;
             set {
@@ -34,6 +35,7 @@ namespace Urania.Desktop {
                 OnPropertyChanged(nameof(Od));
             }
         }
+
         public decimal? Ar {
             get => _ar;
             set {
@@ -47,6 +49,7 @@ namespace Urania.Desktop {
         public WireParameters() {
             _wireParametersValidator = new WireParametersValidator();
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null) {
@@ -55,14 +58,11 @@ namespace Urania.Desktop {
 
         public string Error {
             get {
-                if (_wireParametersValidator != null) {
-                    var results = _wireParametersValidator.Validate(this);
-                    if (results != null && results.Errors.Any()) {
-                        var errors = string.Join(Environment.NewLine,
-                            results.Errors.Select(x => x.ErrorMessage).ToArray());
-                        return errors;
-                    }
-
+                var results = _wireParametersValidator.Validate(this);
+                if (results != null && results.Errors.Any()) {
+                    var errors = string.Join(Environment.NewLine,
+                        results.Errors.Select(x => x.ErrorMessage).ToArray());
+                    return errors;
                 }
 
                 return string.Empty;
