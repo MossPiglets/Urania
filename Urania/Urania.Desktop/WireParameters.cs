@@ -74,7 +74,7 @@ namespace Urania.Desktop {
                 var firstOrDefault = _wireParametersValidator.Validate(this).Errors
                     .FirstOrDefault(a => a.PropertyName == columnName);
                 if (firstOrDefault != null) {
-                    return _wireParametersValidator != null ? firstOrDefault.ErrorMessage : null;
+                    return firstOrDefault.ErrorMessage;
                 }
 
                 return null;
