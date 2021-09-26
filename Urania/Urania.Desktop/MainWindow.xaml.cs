@@ -55,15 +55,15 @@ namespace Urania.Desktop {
             if (MainViewModel.WireParameters.Wd == null) {
                 MainViewModel.WireParameters.Wd = Math.Round(WdCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Od), 2) ;
             }
-
+            
             if (MainViewModel.WireParameters.Ar == null) {
                 MainViewModel.WireParameters.Ar = Math.Round(ArCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Od), 2);
             }
-
+            
             if (MainViewModel.WireParameters.Id == null) {
                 MainViewModel.WireParameters.Id = Math.Round(IdCalculator.Calculate(MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Od), 2);
             }
-
+            
             if (MainViewModel.WireParameters.Od == null) {
                 MainViewModel.WireParameters.Od = Math.Round(OdCalculator.Calculate(MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Id), 2);
             }

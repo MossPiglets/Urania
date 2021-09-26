@@ -7,14 +7,14 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Urania.Desktop {
-    public class MainViewModel : INotifyPropertyChanged, IDataErrorInfo {
+    public class MainViewModel : INotifyPropertyChanged {
         private WdState _wdState;
         private IdState _idState;
-        private MainViewModelValidator _wireParametersValidator;
+        private WireParametersValidator _wireParametersValidator;
 
         public MainViewModel() {
             WireParameters.PropertyChanged += (sender, args) => OnPropertyChanged(nameof(WireParameters));
-            _wireParametersValidator = new MainViewModelValidator();
+            _wireParametersValidator = new WireParametersValidator();
         }
 
         public WireParameters WireParameters { get; set; } = new WireParameters();
@@ -38,32 +38,6 @@ namespace Urania.Desktop {
         protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-        public string Error {
-            get {
-                if (_wireParametersValidator != null) {
-                    var results = _wireParametersValidator.Validate(this);
-                    if (results != null && results.Errors.Any()) {
-                        var errors = string.Join(Environment.NewLine,
-                            results.Errors.Select(x => x.ErrorMessage).ToArray());
-                        return errors;
-                    }
-                }
-
-                return string.Empty;
-            }
-        }
-
-        public string this[string columnName] {
-            get {
-                var firstOrDefault = _wireParametersValidator.Validate(this).Errors
-                    .FirstOrDefault(a => a.PropertyName == columnName);
-                if (firstOrDefault != null) {
-                    return _wireParametersValidator != null ? firstOrDefault.ErrorMessage : null;
-                }
-
-                return null;
-            }
-        }
+        
     }
 }
