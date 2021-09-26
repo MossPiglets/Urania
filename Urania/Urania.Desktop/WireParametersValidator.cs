@@ -7,8 +7,6 @@ namespace Urania.Desktop {
                 RuleFor(a => a.Ar)
                     .GreaterThan(0)
                     .WithMessage("AR musi być większy od 0");
-            }).Otherwise(() => {
-                RuleFor(a => a.Ar).Null();
             });
             When(a => a.Id != null, () => {
                 RuleFor(a => a.Id)
