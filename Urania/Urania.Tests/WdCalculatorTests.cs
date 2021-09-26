@@ -166,7 +166,7 @@ namespace Urania.Tests {
 			Action act = () => WdCalculator.Calculate(id, ar, od);
 
 			//Assert
-			act.Should().Throw<ArgumentOutOfRangeException>(nameof(ar), ar, $"{nameof(ar)} must be greater than {nameof(id)}");
+			act.Should().Throw<ArgumentOutOfRangeException>(nameof(od), od, $"{nameof(od)} must be greater than {nameof(id)}");
 		}
 
 		[Test]
