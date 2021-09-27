@@ -77,5 +77,20 @@ namespace Urania.Desktop {
             WdSwgComboBox.SelectedIndex = -1;
             WdAwgComboBox.SelectedIndex = -1;
         }
+
+        private void HowToUse_Click(object sender, RoutedEventArgs e) {
+            var howToUseText = "Program uwzględnia cztery podstawowe parametry, którymi określamy rozmiar ogniw. " + 
+                "Aby uruchomić przeliczanie musisz wpisać dwa spośród nich. Są to:" + '\n' + '\n' +
+                "- WD - grubość drutu, z którego ogniwko zostało zrobione. Możesz podać go w milimetrach lub w jednej z amerykańskich jednostek 'gauge'. " +
+                "Są to tzw. AWG i SWG. Należy zwrócić uwagę na to, że jednostki te mają nieznacznie różne wartości. Jeżeli nie mamy podane, o którą z tych jednostek chodzi, to można z dużą dozą prawdopodobieństwa uznać, że o AWG. " +
+                "Po wybraniu wartości gauge(AWG lub SWG) z rozwijanej listy program automatycznie przeliczy go na milimetry." + '\n' + '\n' +
+                "- ID - wewnętrzna średnica ogniwka. Ta wartość podawana jest zazwyczaj w sklepach dedykowanych technice chainmaille i w amerykańskich tutorialach. " +
+                "Możesz podać ją w milimetrach lub wybrać odpowiednią wartość w calach, która zostanie automatycznie przeliczona na milimetry." + '\n' + '\n' +
+                "- OD - zewnętrzna średnica ogniwka. Ta wartość podawana jest zazwyczaj w polskich sklepach z półfabrykatami do biżuterii.Podajesz ją w milimetrach." + '\n' +
+                "- AR - współczynnik proporcji, najważniejszy parametr w technice chainmaille.To stosunek ID do WD.Wartość ta określa przydatność ogniwka do poszczególnych splotów." + '\n' + '\n' +
+                "Po wprowadzeniu dwóch z posiadanych parametrów wciśnij przycisk 'przelicz', aby otrzymać pozostałe wartości." + '\n' + '\n' +
+                "Aby wyczyścić wszystkie pola kliknij przycisk 'wyczyść'.";
+            AdonisUI.Controls.MessageBox.Show(howToUseText, "Jak korzystać z programu?", (AdonisUI.Controls.MessageBoxButton)MessageBoxButton.OK, (AdonisUI.Controls.MessageBoxImage)MessageBoxImage.Information);
+        }
     }
 }
