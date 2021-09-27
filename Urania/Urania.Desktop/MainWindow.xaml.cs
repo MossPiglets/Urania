@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
+using AdonisUI.Controls;
 using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
+using System.Web;
 
 namespace Urania.Desktop {
     public partial class MainWindow {
@@ -23,6 +27,43 @@ namespace Urania.Desktop {
             WdAwgComboBox.SelectedIndex = -1;
             MainViewModel.IdState = IdState.Millimeter;
             MainViewModel.WdState = WdState.Millimeter;
+        }
+        private void OUranii_Click(object sender, System.Windows.RoutedEventArgs e) {
+            string kkstring = string.Format("<a href='http://{0}'>Katarzyna Kądziołka</a>", "github.com/Katarzyna-Kadziolka");
+            Hyperlink KKlink = new Hyperlink();
+            KKlink.NavigateUri = new Uri("https://github.com/Katarzyna-Kadziolka");
+            //Hyperlink hyperl = new Hyperlink(run3);
+            //hyperl.NavigateUri = new Uri("http://search.msn.com");
+            string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
+            var messageBox = new MessageBoxModel {
+                Text = "Urania to aplikacja dedykowana twórcom zajmującym się techniką chainmaille, która pomoże Ci przeliczyć dowolne parametry posiadanych, bądź poszukiwanych ogniwek." +
+                " Wystarczy, że podasz dwa spośród nich, także w amerykańskich jednostkach, które zostaną zamienione na system metryczny." +
+                "\nObecna wersja: " + version +
+                "\nAutorzy: " +
+                kkstring +
+                "\n- Hubert Morawski: https://github.com/Morasiu" +
+                "\n- Krystyna Sybalska: https://github.com/Krystyna-Szybalska" +
+                "\n- Zofia Szybalska: https://github.com/Zofia-Szybalska",
+                
+                Caption = "O Uranii",
+                Buttons = new[]
+                    {
+                        MessageBoxButtons.Custom("Autorzy"),
+                        MessageBoxButtons.Cancel("Zamknij"),
+                    },
+            };
+            
+            //TextBlock textBlock = new TextBlock();
+            //Hyperlink link = new Hyperlink();
+            //link.Inlines.Add("Click me");
+            //textBlock.Inlines.Add(link);
+            AdonisUI.Controls.MessageBox.Show(messageBox);
+            Process myProcess = new Process();
+            if (messageBox.Result == AdonisUI.Controls.MessageBoxResult.Custom) {
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = "https://github.com/MossPiglets";
+                myProcess.Start();
+            }
         }
 
         private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
