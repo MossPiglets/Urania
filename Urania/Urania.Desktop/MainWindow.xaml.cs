@@ -29,18 +29,14 @@ namespace Urania.Desktop {
             MainViewModel.WdState = WdState.Millimeter;
         }
         private void OUranii_Click(object sender, System.Windows.RoutedEventArgs e) {
-            string kkstring = string.Format("<a href='http://{0}'>Katarzyna Kądziołka</a>", "github.com/Katarzyna-Kadziolka");
-            Hyperlink KKlink = new Hyperlink();
-            KKlink.NavigateUri = new Uri("https://github.com/Katarzyna-Kadziolka");
-            //Hyperlink hyperl = new Hyperlink(run3);
-            //hyperl.NavigateUri = new Uri("http://search.msn.com");
+            
             string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
             var messageBox = new MessageBoxModel {
                 Text = "Urania to aplikacja dedykowana twórcom zajmującym się techniką chainmaille, która pomoże Ci przeliczyć dowolne parametry posiadanych, bądź poszukiwanych ogniwek." +
                 " Wystarczy, że podasz dwa spośród nich, także w amerykańskich jednostkach, które zostaną zamienione na system metryczny." +
                 "\nObecna wersja: " + version +
                 "\nAutorzy: " +
-                kkstring +
+                "\n- Katarzyna Kądziołka: https://github.com/Katarzyna-Kadziolka" +
                 "\n- Hubert Morawski: https://github.com/Morasiu" +
                 "\n- Krystyna Sybalska: https://github.com/Krystyna-Szybalska" +
                 "\n- Zofia Szybalska: https://github.com/Zofia-Szybalska",
@@ -48,22 +44,10 @@ namespace Urania.Desktop {
                 Caption = "O Uranii",
                 Buttons = new[]
                     {
-                        MessageBoxButtons.Custom("Autorzy"),
                         MessageBoxButtons.Cancel("Zamknij"),
                     },
             };
-            
-            //TextBlock textBlock = new TextBlock();
-            //Hyperlink link = new Hyperlink();
-            //link.Inlines.Add("Click me");
-            //textBlock.Inlines.Add(link);
             AdonisUI.Controls.MessageBox.Show(messageBox);
-            Process myProcess = new Process();
-            if (messageBox.Result == AdonisUI.Controls.MessageBoxResult.Custom) {
-                myProcess.StartInfo.UseShellExecute = true;
-                myProcess.StartInfo.FileName = "https://github.com/MossPiglets";
-                myProcess.Start();
-            }
         }
 
         private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
