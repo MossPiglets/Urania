@@ -113,12 +113,6 @@ namespace Urania.Desktop {
 					url = url.Replace("&", "^&");
 					Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
 				}
-				else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
-					Process.Start("xdg-open", url);
-				}
-				else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
-					Process.Start("open", url);
-				}
 				else {
 					throw;
 				}
