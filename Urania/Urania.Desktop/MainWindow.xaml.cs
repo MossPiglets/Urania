@@ -9,6 +9,7 @@ using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
 using System.Web;
+using System.IO;
 
 namespace Urania.Desktop {
     public partial class MainWindow {
@@ -28,19 +29,14 @@ namespace Urania.Desktop {
             MainViewModel.IdState = IdState.Millimeter;
             MainViewModel.WdState = WdState.Millimeter;
         }
-        private void OUranii_Click(object sender, System.Windows.RoutedEventArgs e) {
+        private void AboutUrania_Click(object sender, System.Windows.RoutedEventArgs e) {
             
             string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
+            string _filePath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
+            string text = File.ReadAllText(_filePath + @"\Resources\AboutUrania.txt");
+            text += version;
             var messageBox = new MessageBoxModel {
-                Text = "Urania to aplikacja dedykowana twórcom zajmującym się techniką chainmaille, która pomoże Ci przeliczyć dowolne parametry posiadanych, bądź poszukiwanych ogniwek." +
-                " Wystarczy, że podasz dwa spośród nich, także w amerykańskich jednostkach, które zostaną zamienione na system metryczny." +
-                "\nObecna wersja: " + version +
-                "\nAutorzy: " +
-                "\n- Katarzyna Kądziołka: https://github.com/Katarzyna-Kadziolka" +
-                "\n- Hubert Morawski: https://github.com/Morasiu" +
-                "\n- Krystyna Sybalska: https://github.com/Krystyna-Szybalska" +
-                "\n- Zofia Szybalska: https://github.com/Zofia-Szybalska",
-                
+                Text = text,
                 Caption = "O Uranii",
                 Buttons = new[]
                     {
