@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using AdonisUI.Controls;
 using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
-using System.Web;
-using System.IO;
 
 namespace Urania.Desktop {
     public partial class MainWindow {
@@ -30,10 +27,8 @@ namespace Urania.Desktop {
             MainViewModel.WdState = WdState.Millimeter;
         }
         private void AboutUrania_Click(object sender, System.Windows.RoutedEventArgs e) {
-            
             string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
-            string _filePath = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
-            string text = File.ReadAllText(_filePath + @"\Resources\AboutUrania.txt");
+            string text = File.ReadAllText( @"Resources\AboutUrania.txt");
             text += version;
             var messageBox = new MessageBoxModel {
                 Text = text,
