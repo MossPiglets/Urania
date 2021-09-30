@@ -23,7 +23,7 @@
                 FontFamily="Segoe UI"
                     FontSize="14">
                 <RibbonMenuItem Header="Jak korzystać?" />
-                <RibbonMenuItem Header="O Uranii" />
+                <RibbonMenuItem Header="O Uranii" Click="AboutUrania_Click"/>
                 <RibbonMenuItem Header="Otwórz Bruxa.pl" />
             </RibbonMenuButton>
         </StackPanel>
