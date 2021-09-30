@@ -103,7 +103,7 @@ namespace Urania.Desktop {
 			WdAwgComboBox.SelectedIndex = -1;
 		}
 
-		private void BruxaPl_OnClick(object sender, RoutedEventArgs e) {
+		private void OpenBruxa_OnClick(object sender, RoutedEventArgs e) {
 			var url = "https://bruxa.pl/";
 			try {
 				Process.Start(url);
