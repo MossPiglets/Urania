@@ -9,6 +9,7 @@ using AdonisUI.Controls;
 using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
+using MessageBoxImage = AdonisUI.Controls.MessageBoxImage;
 
 namespace Urania.Desktop {
 	public partial class MainWindow {
@@ -87,13 +88,6 @@ namespace Urania.Desktop {
 								MainViewModel.WireParameters.Od), 2);
 				}
 
-
-        private void HowToUse_Click(object sender, RoutedEventArgs e) {
-            var howToUseText = File.ReadAllText("Resources/HowToUseUrania.txt");
-            AdonisUI.Controls.MessageBox.Show(howToUseText, "Jak korzystać z programu?", (AdonisUI.Controls.MessageBoxButton)MessageBoxButton.OK, (AdonisUI.Controls.MessageBoxImage)MessageBoxImage.Information);
-        }
-    }
-
 				if (MainViewModel.WireParameters.Id == null) {
 					MainViewModel.WireParameters.Id =
 						Math.Round(
@@ -112,6 +106,11 @@ namespace Urania.Desktop {
 				AdonisUI.Controls.MessageBox.Show(ex.Message, "Error", AdonisUI.Controls.MessageBoxButton.OK,
 					AdonisUI.Controls.MessageBoxImage.Error);
 			}
+		}
+
+        private void HowToUse_Click(object sender, RoutedEventArgs e) {
+			var howToUseText = File.ReadAllText("Resources/HowToUseUrania.txt");
+			AdonisUI.Controls.MessageBox.Show(howToUseText, "Jak korzystać z programu?", AdonisUI.Controls.MessageBoxButton.OK);
 		}
 
 		private void IdMmRadiobutton_Checked(object sender, RoutedEventArgs e) {
