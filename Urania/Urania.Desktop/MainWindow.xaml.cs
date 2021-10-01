@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AdonisUI.Controls;
 using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
@@ -24,6 +25,20 @@ namespace Urania.Desktop {
             WdAwgComboBox.SelectedIndex = -1;
             MainViewModel.IdState = IdState.Millimeter;
             MainViewModel.WdState = WdState.Millimeter;
+        }
+        private void AboutUrania_Click(object sender, System.Windows.RoutedEventArgs e) {
+            string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
+            string text = File.ReadAllText( @"Resources\AboutUrania.txt");
+            text += version;
+            var messageBox = new MessageBoxModel {
+                Text = text,
+                Caption = "O Uranii",
+                Buttons = new[]
+                    {
+                        MessageBoxButtons.Cancel("Zamknij"),
+                    },
+            };
+            AdonisUI.Controls.MessageBox.Show(messageBox);
         }
 
         private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -53,20 +68,25 @@ namespace Urania.Desktop {
             PastedTextValidator.AllowPastOnlyNumbers(e);
         }
         private void ButtonCalculate_OnClick(object sender, RoutedEventArgs e) {
-            if (MainViewModel.WireParameters.Wd == null) {
-                MainViewModel.WireParameters.Wd = Math.Round(WdCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Od), 2) ;
+            try {
+                if (MainViewModel.WireParameters.Wd == null) {
+                    MainViewModel.WireParameters.Wd = Math.Round(WdCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Od), 2);
+                }
+
+                if (MainViewModel.WireParameters.Ar == null) {
+                    MainViewModel.WireParameters.Ar = Math.Round(ArCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Od), 2);
+                }
+
+                if (MainViewModel.WireParameters.Id == null) {
+                    MainViewModel.WireParameters.Id = Math.Round(IdCalculator.Calculate(MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Od), 2);
+                }
+
+                if (MainViewModel.WireParameters.Od == null) {
+                    MainViewModel.WireParameters.Od = Math.Round(OdCalculator.Calculate(MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Id), 2);
+                }
             }
-            
-            if (MainViewModel.WireParameters.Ar == null) {
-                MainViewModel.WireParameters.Ar = Math.Round(ArCalculator.Calculate(MainViewModel.WireParameters.Id, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Od), 2);
-            }
-            
-            if (MainViewModel.WireParameters.Id == null) {
-                MainViewModel.WireParameters.Id = Math.Round(IdCalculator.Calculate(MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Od), 2);
-            }
-            
-            if (MainViewModel.WireParameters.Od == null) {
-                MainViewModel.WireParameters.Od = Math.Round(OdCalculator.Calculate(MainViewModel.WireParameters.Ar, MainViewModel.WireParameters.Wd, MainViewModel.WireParameters.Id), 2);
+            catch(Exception ex) {
+                AdonisUI.Controls.MessageBox.Show(ex.Message, "Error", AdonisUI.Controls.MessageBoxButton.OK, AdonisUI.Controls.MessageBoxImage.Error);
             }
         }
 
