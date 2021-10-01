@@ -1,35 +1,48 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AdonisUI.Controls;
 using Urania.Core;
 using Urania.Core.Data;
 using Urania.Desktop.States;
 
 namespace Urania.Desktop {
 	public partial class MainWindow {
-		MainViewModel MainViewModel { get; set; } = new MainViewModel();
-
-		public MainWindow() {
-			InitializeComponent();
-			this.DataContext = MainViewModel;
-		}
-
-		private void CleanButton_Click(object sender, System.Windows.RoutedEventArgs e) {
-			MainViewModel.WireParameters.Wd = null;
-			MainViewModel.WireParameters.Id = null;
-			MainViewModel.WireParameters.Od = null;
-			MainViewModel.WireParameters.Ar = null;
-			IdCalComboBox.SelectedIndex = -1;
-			WdSwgComboBox.SelectedIndex = -1;
-			WdAwgComboBox.SelectedIndex = -1;
-			MainViewModel.IdState = IdState.Millimeter;
-			MainViewModel.WdState = WdState.Millimeter;
-		}
-
-		private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        MainViewModel MainViewModel { get; set; } = new MainViewModel();
+        public MainWindow() {
+            InitializeComponent();
+            this.DataContext = MainViewModel;
+        }
+        private void CleanButton_Click(object sender, System.Windows.RoutedEventArgs e) {
+            MainViewModel.WireParameters.Wd = null;
+            MainViewModel.WireParameters.Id = null;
+            MainViewModel.WireParameters.Od = null;
+            MainViewModel.WireParameters.Ar = null;
+            IdCalComboBox.SelectedIndex = -1;
+            WdSwgComboBox.SelectedIndex = -1;
+            WdAwgComboBox.SelectedIndex = -1;
+            MainViewModel.IdState = IdState.Millimeter;
+            MainViewModel.WdState = WdState.Millimeter;
+        }
+        private void AboutUrania_Click(object sender, System.Windows.RoutedEventArgs e) {
+            string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
+            string text = File.ReadAllText( @"Resources\AboutUrania.txt");
+            text += version;
+            var messageBox = new MessageBoxModel {
+                Text = text,
+                Caption = "O Uranii",
+                Buttons = new[]
+                    {
+                        MessageBoxButtons.Cancel("Zamknij"),
+                    },
+            };
+            AdonisUI.Controls.MessageBox.Show(messageBox);
+        }
+        private void WdSwgComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
 			if (e.AddedItems.Count != 0) {
 				MainViewModel.WireParameters.Wd = Swg.Values[(SwgName) e.AddedItems[0]];
 			}
