@@ -24,7 +24,7 @@
                 FontSize="14">
                 <RibbonMenuItem Header="Jak korzystać?" Click="HowToUse_Click" />
                 <RibbonMenuItem Header="O Uranii" Click="AboutUrania_Click"/>
-                <RibbonMenuItem Header="Otwórz Bruxa.pl" />
+                <RibbonMenuItem Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
             </RibbonMenuButton>
         </StackPanel>
     </adonisControls:AdonisWindow.TitleBarContent>
