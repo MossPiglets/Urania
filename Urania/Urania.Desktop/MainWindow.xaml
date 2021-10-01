@@ -15,17 +15,18 @@
     <adonisControls:AdonisWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </adonisControls:AdonisWindow.Style>
-    
     <adonisControls:AdonisWindow.TitleBarContent>
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            <RibbonMenuButton Label="Pomoc"
+            <Menu Background="#D8A256"
                 FontFamily="Segoe UI"
                 FontSize="14">
-                <RibbonMenuItem Header="Jak korzystać?" Click="HowToUse_Click" />
-                <RibbonMenuItem Header="O Uranii" Click="AboutUrania_Click"/>
-                <RibbonMenuItem Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
-            </RibbonMenuButton>
+                <MenuItem Header="Pomoc">
+                    <MenuItem Background="#FFF9E5" Header="Jak korzystać?" Click="HowToUse_Click" />
+                    <MenuItem Background="#FFF9E5" Header="O Uranii" Click="AboutUrania_Click"/>
+                    <MenuItem Background="#FFF9E5" Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
+                </MenuItem>
+            </Menu>
         </StackPanel>
     </adonisControls:AdonisWindow.TitleBarContent>
 
