@@ -10,12 +10,19 @@ namespace Urania.Desktop {
     public class MainViewModel : INotifyPropertyChanged {
         private WdState _wdState;
         private IdState _idState;
+        private bool _canCalculate;
 
         public MainViewModel() {
             WireParameters.PropertyChanged += (sender, args) => OnPropertyChanged(nameof(WireParameters));
+            WireParameters.PropertyChanged += (sender, args) => CheckCalculatePossibility(); //dalej nie rozumiem po co to (sender,args)
         }
 
         public WireParameters WireParameters { get; set; } = new WireParameters();
+
+        public bool CanCalculate {
+            get => _canCalculate;
+            set { _canCalculate = value; }
+        }
 
         public WdState WdState {
             get => _wdState;
@@ -36,6 +43,17 @@ namespace Urania.Desktop {
         protected void OnPropertyChanged([CallerMemberName] string name = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        
+        private void CheckCalculatePossibility() {
+            if (WireParameters.IsValid == true) {
+                int notNullCount = 0;
+                if (WireParameters.Id != null) notNullCount++;
+                if (WireParameters.Od != null) notNullCount++;
+                if (WireParameters.Wd != null) notNullCount++;
+                if (WireParameters.Ar != null) notNullCount++;
+
+                if (notNullCount == 2) { _canCalculate = true; } 
+                else { _canCalculate = false; }
+            } else { _canCalculate = false; }
+        }
     }
 }
