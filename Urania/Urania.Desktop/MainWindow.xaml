@@ -15,7 +15,9 @@
     <adonisControls:AdonisWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </adonisControls:AdonisWindow.Style>
-    
+    <adonisControls:AdonisWindow.TitleBarBackground>#D8A256</adonisControls:AdonisWindow.TitleBarBackground>
+    <adonisControls:AdonisWindow.TitleBarForeground>#331005</adonisControls:AdonisWindow.TitleBarForeground>
+    <adonisControls:AdonisWindow.WindowButtonHighlightBrush>#A0512C</adonisControls:AdonisWindow.WindowButtonHighlightBrush>
     <adonisControls:AdonisWindow.TitleBarContent>
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right">
