@@ -5,13 +5,15 @@
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                              xmlns:core="clr-namespace:Urania.Core.Data;assembly=Urania.Core"
                              xmlns:desktop="clr-namespace:Urania.Desktop"
-                             x:Class="Urania.Desktop.MainWindow"
                              xmlns:local="clr-namespace:Urania.Desktop"
-                             xmlns:src="clr-namespace:Urania.Desktop.States"
-                             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                             xmlns:src="clr-namespace:Urania.Desktop.States" d:DataContext="{d:DesignInstance Type=desktop:MainViewModel}"
+                             x:Class="Urania.Desktop.MainWindow"
                              mc:Ignorable="d"
                              Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
-
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    
     <adonisControls:AdonisWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </adonisControls:AdonisWindow.Style>
@@ -39,7 +41,7 @@
 					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
             <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>
-        <TextBlock Text="Wpisz parametry lub wybierz z listy" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" />
+        <TextBlock Text="Wpisz (lub wybierz z listy) dwa parametry:" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" />
         <Grid Margin="50 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -136,9 +138,12 @@
                          ToolTip="Wpisz odpowiednią wartość współczynnika proporcji" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
             </GroupBox>
         </Grid>
-        
+
+        <TextBlock Text="Aby przeliczyć wpisz dokładnie dwa z podanych parametrów" HorizontalAlignment="Center" FontSize="13" Margin="0 10 0 -10" FontStyle="Italic"
+                   Visibility="{Binding Path=IsParametersCountAboveTwo, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVis}}"/>
+
         <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="ButtonCalculate_OnClick" ToolTip="Oblicz brakujące parametry"
-                IsEnabled="{Binding CanCalculate}"/>
+                IsEnabled="{Binding Path=CanCalculate, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
         
     </StackPanel>

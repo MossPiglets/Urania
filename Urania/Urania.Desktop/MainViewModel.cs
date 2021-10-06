@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Urania.Core;
-using Urania.Desktop.States;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Urania.Desktop.States;
 
 namespace Urania.Desktop {
     public class MainViewModel : INotifyPropertyChanged {
@@ -19,9 +15,22 @@ namespace Urania.Desktop {
 
         public WireParameters WireParameters { get; set; } = new WireParameters();
 
+        private bool _isParametersCountAboveTwo;
+
+        public bool IsParametersCountAboveTwo {
+            get => _isParametersCountAboveTwo;
+            set { 
+                _isParametersCountAboveTwo = value;
+                OnPropertyChanged(nameof(IsParametersCountAboveTwo));
+            }
+        }
+
         public bool CanCalculate {
             get => _canCalculate;
-            set { _canCalculate = value; }
+            set { 
+                _canCalculate = value; 
+                OnPropertyChanged(nameof(CanCalculate));
+            }
         }
 
         public WdState WdState {
@@ -51,9 +60,26 @@ namespace Urania.Desktop {
                 if (WireParameters.Wd != null) notNullCount++;
                 if (WireParameters.Ar != null) notNullCount++;
 
-                if (notNullCount == 2) { _canCalculate = true; } 
-                else { _canCalculate = false; }
-            } else { _canCalculate = false; }
+                
+                if (notNullCount < 2) {
+                    CanCalculate = false;
+                    IsParametersCountAboveTwo = false;
+                } 
+
+                else if (notNullCount == 2) { 
+                    CanCalculate = true;
+                    IsParametersCountAboveTwo = false;
+                } 
+                
+                else if (notNullCount > 2) {
+                    CanCalculate = false;
+                    IsParametersCountAboveTwo = true;
+                }
+            } 
+            else { 
+                CanCalculate = false;
+                IsParametersCountAboveTwo = false; 
+            }
         }
     }
 }
