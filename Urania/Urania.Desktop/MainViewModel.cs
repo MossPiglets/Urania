@@ -10,7 +10,7 @@ namespace Urania.Desktop {
 
         public MainViewModel() {
             WireParameters.PropertyChanged += (sender, args) => OnPropertyChanged(nameof(WireParameters));
-            WireParameters.PropertyChanged += (sender, args) => CheckCalculatePossibility(); //dalej nie rozumiem po co to (sender,args)
+            WireParameters.PropertyChanged += (sender, args) => CheckCalculatePossibility();
         }
 
         public WireParameters WireParameters { get; set; } = new WireParameters();
