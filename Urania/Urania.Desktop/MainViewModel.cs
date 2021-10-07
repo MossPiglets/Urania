@@ -53,6 +53,9 @@ namespace Urania.Desktop {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
         private void CheckCalculatePossibility() {
+            CanCalculate = false;
+            IsParametersCountAboveTwo = false;
+
             if (WireParameters.IsValid == true) {
                 int notNullCount = 0;
                 if (WireParameters.Id != null) notNullCount++;
@@ -60,26 +63,14 @@ namespace Urania.Desktop {
                 if (WireParameters.Wd != null) notNullCount++;
                 if (WireParameters.Ar != null) notNullCount++;
 
-                
-                if (notNullCount < 2) {
-                    CanCalculate = false;
-                    IsParametersCountAboveTwo = false;
-                } 
-
-                else if (notNullCount == 2) { 
+                if (notNullCount == 2) { 
                     CanCalculate = true;
-                    IsParametersCountAboveTwo = false;
                 } 
                 
                 else if (notNullCount > 2) {
-                    CanCalculate = false;
                     IsParametersCountAboveTwo = true;
                 }
             } 
-            else { 
-                CanCalculate = false;
-                IsParametersCountAboveTwo = false; 
-            }
         }
     }
 }
