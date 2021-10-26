@@ -11,6 +11,7 @@
     <Authors>MossPiglets</Authors>
     <PackageId>Urania</PackageId>
     <Title>Urania</Title>
+    <AssemblyName>Urania</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
