@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_85C8C170679B4FCC8FF1B0ADC004EC83"
+        "MsmKey" = "8:_A0D9EAD280E34CB5AF8C680D8C9C3BCB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -89,6 +89,11 @@
                     "Name" = "8:.NET Desktop Runtime 5.0.9 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.5.0.x64"
                     }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.5.0.x86"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 5.0.9 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.5.0.x86"
+                    }
                 }
             }
         }
@@ -122,10 +127,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_85C8C170679B4FCC8FF1B0ADC004EC83"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A0D9EAD280E34CB5AF8C680D8C9C3BCB"
             {
             "SourcePath" = "8:..\\Urania.Desktop\\BruxaLogo.ico"
-            "TargetName" = "8:BruxaLogo.ico"
+            "TargetName" = "8:Logo.ico"
             "Tag" = "8:"
             "Folder" = "8:_A86BFF839A364B3A968D7C0B77F63A8D"
             "Condition" = "8:"
@@ -210,7 +215,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Urania"
         "ProductCode" = "8:{D2759D49-0992-4E0E-9D4B-E11273951658}"
-        "PackageCode" = "8:{803545BB-2336-4152-889C-48EA674EFDF6}"
+        "PackageCode" = "8:{8C4E98A0-6775-4590-B02B-9304C505C5B4}"
         "UpgradeCode" = "8:{896A3624-6001-4DBB-B927-6B0FE0F71FAA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -227,7 +232,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Urania Installer"
         "ARPURLINFOABOUT" = "8:https://github.com/MossPiglets"
-        "ARPPRODUCTICON" = "8:_85C8C170679B4FCC8FF1B0ADC004EC83"
+        "ARPPRODUCTICON" = "8:_A0D9EAD280E34CB5AF8C680D8C9C3BCB"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -341,7 +346,7 @@
             "Target" = "8:_372229AA3FAB48629D280935E8D8A67E"
             "Folder" = "8:_089E2EE27B2649278B07E7A50ACB7972"
             "WorkingFolder" = "8:_A86BFF839A364B3A968D7C0B77F63A8D"
-            "Icon" = "8:_85C8C170679B4FCC8FF1B0ADC004EC83"
+            "Icon" = "8:_A0D9EAD280E34CB5AF8C680D8C9C3BCB"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B8DF78734C6A4B7B80D468EBEA1D333C"
@@ -355,7 +360,7 @@
             "Target" = "8:_372229AA3FAB48629D280935E8D8A67E"
             "Folder" = "8:_B032C005D909413EAA335DC9FCC48C21"
             "WorkingFolder" = "8:_A86BFF839A364B3A968D7C0B77F63A8D"
-            "Icon" = "8:_85C8C170679B4FCC8FF1B0ADC004EC83"
+            "Icon" = "8:_A0D9EAD280E34CB5AF8C680D8C9C3BCB"
             "Feature" = "8:"
             }
         }
