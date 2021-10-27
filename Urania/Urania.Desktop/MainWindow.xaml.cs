@@ -109,8 +109,8 @@ namespace Urania.Desktop {
 		}
 
         private void HowToUse_Click(object sender, RoutedEventArgs e) {
-			var howToUseText = File.ReadAllText("Resources/HowToUseUrania.txt");
-			AdonisUI.Controls.MessageBox.Show(howToUseText, "Jak korzystać z programu?", AdonisUI.Controls.MessageBoxButton.OK);
+			HowToUseUrania howToUse = new HowToUseUrania();
+			howToUse.Show();
 		}
 
 		private void IdMmRadiobutton_Checked(object sender, RoutedEventArgs e) {
