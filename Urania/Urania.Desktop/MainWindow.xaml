@@ -3,6 +3,7 @@
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                             xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                              xmlns:core="clr-namespace:Urania.Core.Data;assembly=Urania.Core"
                              xmlns:desktop="clr-namespace:Urania.Desktop"
                              xmlns:local="clr-namespace:Urania.Desktop"
@@ -12,7 +13,6 @@
                              Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
-        <desktop:DecimalConverter x:Key="ToDecimal" />
     </Window.Resources>
 
     <adonisControls:AdonisWindow.Style>
@@ -28,7 +28,10 @@
             <Menu Background="#D8A256"
                   FontFamily="Segoe UI"
                   FontSize="14"
-                  HorizontalAlignment="Center" VerticalAlignment="Center">
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  adonisExtensions:RippleExtension.BackgroundBrush="#D8A256"
+                  adonisExtensions:RippleExtension.ForegroundBrush="#D8A256"
+                  adonisExtensions:RippleExtension.BorderBrush="#D8A256">
                 <MenuItem Header="Pomoc" Foreground="#331005">
                     <MenuItem Background="#FFF9E5" Foreground="#331005" Header="Jak korzystać?" Click="HowToUse_Click" />
                     <MenuItem Background="#FFF9E5" Foreground="#331005" Header="O Uranii" Click="AboutUrania_Click"/>
@@ -56,8 +59,9 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <GroupBox Name="LeftUpBorderID" Header="ID (Średnica wewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="0"
-                      Margin="0 0 20 45" Foreground="#331005"  Background="#FFF9E5">
+            <GroupBox Name="LeftUpBorderID" BorderThickness="1" Grid.Column="0" Grid.Row="0" Header="ID (Średnica wewnętrzna)"
+                      Margin="0 0 20 45" Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel>
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
@@ -87,7 +91,9 @@
                 </StackPanel>
             </GroupBox>
             <GroupBox Name="RightUpBorderWD" Header="WD (Grubość drutu)" BorderThickness="1" Grid.Column="1" Grid.Row="0"
-                      Margin="20 0 0 10" Foreground="#331005" Background="#FFF9E5" Grid.ColumnSpan="2">
+                      Margin="20 0 0 10" Grid.ColumnSpan="2"
+                      Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel>
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
@@ -129,8 +135,8 @@
                 </StackPanel>
             </GroupBox>
             <GroupBox Name="LeftDownBorderOD" Header="OD (Średnica zewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="1"
-                      Margin="0 0 20 10" Foreground="#331005" Background="#FFF9E5">
-
+                      Margin="0 0 20 10" Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                     <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Foreground="#331005"
                              Text="{Binding WireParameters.Od, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
@@ -140,7 +146,8 @@
             </GroupBox>
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
-                    Margin="20 0 0 10" Foreground="#331005" Background="#FFF9E5" Grid.ColumnSpan="2">
+                    Margin="20 0 0 10" Grid.ColumnSpan="2" Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#331005"
                          Text="{Binding WireParameters.Ar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
                          ToolTip="Wpisz odpowiednią wartość współczynnika proporcji" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
@@ -150,10 +157,11 @@
         <TextBlock Text="Aby przeliczyć wpisz dokładnie dwa z podanych parametrów" HorizontalAlignment="Center" FontSize="13" Foreground="#331005" Margin="0 10 0 -10" FontStyle="Italic"
                    Visibility="{Binding Path=IsParametersCountAboveTwo, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVis}}"/>
 
-        <Button Content="Przelicz" Foreground="#331005" Background="#FFF9E5"
-                HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="ButtonCalculate_OnClick" ToolTip="Oblicz brakujące parametry"
+        <Button Content="Przelicz" Foreground="#331005" Background="#FFF9E5" 
+                adonisExtensions:CursorSpotlightExtension.BackgroundBrush ="#D8A256"
+                HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" 
+                Click="ButtonCalculate_OnClick" ToolTip="Oblicz brakujące parametry"
                 IsEnabled="{Binding Path=CanCalculate, UpdateSourceTrigger=PropertyChanged}" />
-
 
         <Button Content="Wyczyść" Foreground="#331005" Background="#FFF9E5"
                 HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" 
