@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows;
@@ -65,6 +66,10 @@ namespace Urania.Desktop {
 			TextBox textBox = (TextBox) sender;
 			string text = textBox.Text;
 			text += e.Text;
+			if (e.Text == CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator) {
+				e.Handled = false;
+				return;
+			}
 			e.Handled = !decimal.TryParse(text, out _);
 		}
 

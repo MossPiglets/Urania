@@ -12,6 +12,7 @@
                              Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <desktop:DecimalConverter x:Key="ToDecimal" />
     </Window.Resources>
 
     <adonisControls:AdonisWindow.Style>
