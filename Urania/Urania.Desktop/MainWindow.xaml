@@ -12,6 +12,7 @@
                              Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <desktop:DecimalConverter x:Key="ToDecimal" />
     </Window.Resources>
     
     <adonisControls:AdonisWindow.Style>
@@ -63,7 +64,7 @@
                                     IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"
                                     Checked="IdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}" 
+                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}" 
                                             IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
                                             ToolTip="Wpisz odpowiednią wartość średnicy wewnętrznej w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" />
@@ -91,7 +92,7 @@
                                      IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}"
                                      Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, TargetNullValue=''}"
+                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, TargetNullValue=''}"
                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
                                 ToolTip="Wpisz odpowiednią wartość grubości drutu w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                             <TextBlock Text="mm" VerticalAlignment="Center" />
@@ -126,7 +127,7 @@
                       Margin="0 0 20 10">
 
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
+                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
                              ToolTip="Wpisz odpowiednią wartość średnicy zewnętrznej w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                     <TextBlock Text="mm" VerticalAlignment="Center" />
                 </StackPanel>
@@ -134,7 +135,7 @@
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
                     Margin="20 0 0 10">
-                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
+                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
                          ToolTip="Wpisz odpowiednią wartość współczynnika proporcji" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
             </GroupBox>
         </Grid>
