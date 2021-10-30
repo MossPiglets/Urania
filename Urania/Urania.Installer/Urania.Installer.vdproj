@@ -177,7 +177,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_A86BFF839A364B3A968D7C0B77F63A8D"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -215,7 +215,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Urania"
         "ProductCode" = "8:{D2759D49-0992-4E0E-9D4B-E11273951658}"
-        "PackageCode" = "8:{0AAA90E2-D108-4977-9511-D60DF8C34852}"
+        "PackageCode" = "8:{88DAA7C1-7630-49E2-9F25-7BF5F352AE8D}"
         "UpgradeCode" = "8:{896A3624-6001-4DBB-B927-6B0FE0F71FAA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -236,7 +236,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -764,7 +764,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_372229AA3FAB48629D280935E8D8A67E"
             {
-            "SourcePath" = "8:..\\Urania.Desktop\\obj\\Debug\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\Urania.Desktop\\obj\\Release\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A86BFF839A364B3A968D7C0B77F63A8D"
@@ -776,7 +776,7 @@
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
+            "PackageAs" = "3:2"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
