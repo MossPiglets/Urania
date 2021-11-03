@@ -1,0 +1,16 @@
+﻿<controls:AdonisWindow x:Class="Urania.Desktop.HowToUseUrania"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+        mc:Ignorable="d"
+        Title="Jak korzystać z programu?" SizeToContent="WidthAndHeight">
+    
+    <StackPanel HorizontalAlignment="Center" Margin="10 0">
+        <TextBlock Text="Program uwzględnia cztery podstawowe parametry, którymi określamy rozmiar ogniw." HorizontalAlignment="Center"/>
+        <Image Source="/Resources/Parameters.jpg" Width="350" Margin="20 0 0 0" />
+        <TextBlock x:Name="lastLines" TextAlignment="Left" Margin="20 0 20 20"/>
+    </StackPanel>
+    
+</controls:AdonisWindow>

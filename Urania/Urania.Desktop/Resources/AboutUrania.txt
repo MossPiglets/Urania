@@ -1,7 +1,0 @@
-﻿Urania to aplikacja dedykowana twórcom zajmującym się techniką chainmaille, która pomoże Ci przeliczyć dowolne parametry posiadanych, bądź poszukiwanych ogniwek. Wystarczy, że podasz dwa spośród nich, także w amerykańskich jednostkach, które zostaną zamienione na system metryczny.
-Autorzy: 
-- Katarzyna Kądziołka: https://github.com/Katarzyna-Kadziolka
-- Hubert Morawski: https://github.com/Morasiu
-- Krystyna Sybalska: https://github.com/Krystyna-Szybalska
-- Zofia Szybalska: https://github.com/Zofia-Szybalska
-Obecna wersja: 

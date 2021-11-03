@@ -10,7 +10,7 @@
                              xmlns:src="clr-namespace:Urania.Desktop.States" d:DataContext="{d:DesignInstance Type=desktop:MainViewModel}"
                              x:Class="Urania.Desktop.MainWindow"
                              mc:Ignorable="d"
-                             Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
+                             Title="Kalkulator ogniwek" SizeToContent="Height" Width="540" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <desktop:DecimalConverter x:Key="ToDecimal" />
@@ -35,7 +35,7 @@
                   adonisExtensions:RippleExtension.BorderBrush="#D8A256">
                 <MenuItem Header="Pomoc" Foreground="#331005">
                     <MenuItem Background="#FFF9E5" Foreground="#331005" Header="Jak korzystać?" Click="HowToUse_Click" />
-                    <MenuItem Background="#FFF9E5" Foreground="#331005" Header="O Uranii" Click="AboutUrania_Click"/>
+                    <MenuItem Background="#FFF9E5" Foreground="#331005" Header="O programie" Click="AboutUrania_Click"/>
                     <MenuItem Background="#FFF9E5" Foreground="#331005" Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
                 </MenuItem>
             </Menu>
@@ -44,8 +44,8 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
-            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."
-					   Foreground="#331005" TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
+            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostale. Niestety często bywa to kłopotliwe, tym bardziej, że nie zawsze mamy je podane w jednostkach metrycznych.                                          Ten program policzy wszystko za Ciebie."
+					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" Foreground="#331005"/>
             <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>
         <TextBlock Text="Wpisz (lub wybierz z listy) dwa parametry:" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" Foreground="#331005" />
@@ -111,7 +111,19 @@
                         </StackPanel>
                     </RadioButton>
                     <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
-                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}"
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}"
+                                 Checked="WdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
+                            <ComboBox x:Name="WdAwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
+                                ToolTip="Wybierz z listy wartość AWG"
+                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" 
                                  Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="SWG" Foreground="#331005" VerticalAlignment="Center" Margin="5 0" />
@@ -119,18 +131,6 @@
                                 SelectionChanged="WdSwgComboBox_OnSelectionChanged"
                                 ToolTip="Wybierz z listy wartość SWG"
                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
-                        </StackPanel>
-                    </RadioButton>
-
-                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
-                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" 
-                                 Checked="WdMmRadiobutton_Checked">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="AWG" Foreground="#331005" VerticalAlignment="Center" Margin="5 0" />
-                            <ComboBox x:Name="WdAwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:AwgName}}}"
-                                ToolTip="Wybierz z listy wartość AWG"
-                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
-                                SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
@@ -156,15 +156,16 @@
         </Grid>
 
         <TextBlock Text="Aby przeliczyć wpisz dokładnie dwa z podanych parametrów" HorizontalAlignment="Center" FontSize="13" Foreground="#331005" Margin="0 10 0 -10" FontStyle="Italic"
-                   Visibility="{Binding Path=IsParametersCountAboveTwo, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVis}}"/>
+                   Visibility="{Binding Path=IsParametersCountDifferentThanTwo, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVis}}"/>
 
         <Button Content="Przelicz" Foreground="#331005" Background="#FFF9E5" 
                 adonisExtensions:CursorSpotlightExtension.BackgroundBrush ="#D8A256"
                 HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" 
                 Click="ButtonCalculate_OnClick" ToolTip="Oblicz brakujące parametry"
-                IsEnabled="{Binding Path=CanCalculate, UpdateSourceTrigger=PropertyChanged}" />
+                IsEnabled="{Binding Path=CanCalculate, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button Content="Wyczyść" Foreground="#331005" Background="#FFF9E5"
+                adonisExtensions:CursorSpotlightExtension.BackgroundBrush ="#D8A256"
                 HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" 
                 Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
 
