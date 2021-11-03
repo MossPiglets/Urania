@@ -140,7 +140,7 @@
                       adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
                     <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Foreground="#331005"
-                             Text="{Binding WireParameters.Od, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
+                             Text="{Binding WireParameters.Od, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
                              ToolTip="Wpisz odpowiednią wartość średnicy zewnętrznej w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
                     <TextBlock Text="mm" Foreground="#331005" VerticalAlignment="Center" />
                 </StackPanel>
