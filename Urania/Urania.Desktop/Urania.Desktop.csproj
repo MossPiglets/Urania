@@ -6,6 +6,12 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>BruxaLogo.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <Product>Kalkulator Ogniwek</Product>
+    <Company>MossPiglets</Company>
+    <Authors>MossPiglets</Authors>
+    <PackageId>Urania</PackageId>
+    <Title>Urania</Title>
+    <AssemblyName>Kalkulator Ogniwek</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,6 +45,12 @@
     <Content Include="Resources\BruxaLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="BruxaLogo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
