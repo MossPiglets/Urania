@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Jak korzystać z programu?" Height="450" Width="800">
     <StackPanel>
-        <TextBlock x:Name="firstLines" />
+        <TextBlock Text="Program uwzględnia cztery podstawowe parametry, którymi określamy rozmiar ogniw."/>
         <Image Source="/Resources/Parameters.jpg" Width="250" Margin="20 0 0 0" />
         <TextBlock x:Name="lastLines"/>
         <Button Content="OK" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="OkButton_Click"/>

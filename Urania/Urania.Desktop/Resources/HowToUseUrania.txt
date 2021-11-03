@@ -1,5 +1,4 @@
-﻿Program uwzględnia cztery podstawowe parametry, którymi określamy rozmiar ogniw.  
-Aby uruchomić przeliczanie musisz wpisać dwa spośród nich. Są to:
+﻿Aby uruchomić przeliczanie musisz wpisać dwa spośród nich. Są to:
 
 - WD - grubość drutu, z którego ogniwko zostało zrobione. Możesz podać go w milimetrach lub w jednej z amerykańskich jednostek 'gauge'. 
 Są to tzw. AWG i SWG. Należy zwrócić uwagę na to, że jednostki te mają nieznacznie różne wartości. 

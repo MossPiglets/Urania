@@ -37,7 +37,8 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
-            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."
+            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostale. Niestety często bywa to kłopotliwe, tym bardziej, że nie zawsze mamy je podane w jednostkach metrycznych. 
+Ten program policzy wszystko za Ciebie."
 					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
             <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>
