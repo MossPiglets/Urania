@@ -5,7 +5,7 @@ namespace Urania.Desktop {
 
     public partial class HowToUseUrania {
 
-        private string lines = File.ReadAllText("Resources/HowToUseUrania.txt");
+        private string lines = File.ReadAllText("Resources/HowToUse.txt");
 
         public HowToUseUrania() {
             InitializeComponent();

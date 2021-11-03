@@ -9,7 +9,7 @@
                              xmlns:src="clr-namespace:Urania.Desktop.States" d:DataContext="{d:DesignInstance Type=desktop:MainViewModel}"
                              x:Class="Urania.Desktop.MainWindow"
                              mc:Ignorable="d"
-                             Title="Urania" Height="640" Width="540" >
+                             Title="Kalkulator ogniwek" Height="640" Width="540" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
@@ -28,7 +28,7 @@
                 FontSize="14">
                 <MenuItem Header="Pomoc">
                     <MenuItem Background="#FFF9E5" Header="Jak korzystać?" Click="HowToUse_Click" />
-                    <MenuItem Background="#FFF9E5" Header="O Uranii" Click="AboutUrania_Click"/>
+                    <MenuItem Background="#FFF9E5" Header="O programie" Click="AboutUrania_Click"/>
                     <MenuItem Background="#FFF9E5" Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
                 </MenuItem>
             </Menu>
@@ -37,8 +37,7 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
-            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostale. Niestety często bywa to kłopotliwe, tym bardziej, że nie zawsze mamy je podane w jednostkach metrycznych. 
-Ten program policzy wszystko za Ciebie."
+            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostale. Niestety często bywa to kłopotliwe, tym bardziej, że nie zawsze mamy je podane w jednostkach metrycznych.                                          Ten program policzy wszystko za Ciebie."
 					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
             <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>

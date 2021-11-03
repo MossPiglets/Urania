@@ -10,7 +10,7 @@
     <StackPanel HorizontalAlignment="Center" Margin="10 0">
         <TextBlock Text="Program uwzględnia cztery podstawowe parametry, którymi określamy rozmiar ogniw." HorizontalAlignment="Center"/>
         <Image Source="/Resources/Parameters.jpg" Width="350" Margin="20 0 0 0" />
-        <TextBlock x:Name="lastLines" TextAlignment="Left" Margin="20 0"/>
+        <TextBlock x:Name="lastLines" TextAlignment="Left" Margin="20 0 20 20"/>
     </StackPanel>
     
 </controls:AdonisWindow>

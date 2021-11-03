@@ -31,11 +31,11 @@ namespace Urania.Desktop {
         }
         private void AboutUrania_Click(object sender, System.Windows.RoutedEventArgs e) {
             string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
-            string text = File.ReadAllText( @"Resources\AboutUrania.txt");
+            string text = File.ReadAllText( @"Resources\About.txt");
             text += version;
             var messageBox = new MessageBoxModel {
                 Text = text,
-                Caption = "O Uranii",
+                Caption = "O programie",
                 Buttons = new[]
                     {
                         MessageBoxButtons.Cancel("Zamknij"),

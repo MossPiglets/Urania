@@ -30,13 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\HowToUseUrania.txt">
+    <Content Include="Resources\HowToUse.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Parameters.JPG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\AboutUrania.txt">
+    <Content Include="Resources\About.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\BruxaLogo.png">
