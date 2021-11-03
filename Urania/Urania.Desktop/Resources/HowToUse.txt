@@ -1,5 +1,4 @@
-﻿Program uwzględnia cztery podstawowe parametry, którymi określamy rozmiar ogniw.  
-Aby uruchomić przeliczanie musisz wpisać dwa spośród nich. Są to:
+﻿Aby uruchomić przeliczanie musisz wpisać dwa spośród nich. Są to:
 
 - WD - grubość drutu, z którego ogniwko zostało zrobione. Możesz podać go w milimetrach lub w jednej z amerykańskich jednostek 'gauge'. 
 Są to tzw. AWG i SWG. Należy zwrócić uwagę na to, że jednostki te mają nieznacznie różne wartości. 
@@ -9,7 +8,7 @@ Po wybraniu wartości gauge (AWG lub SWG) z rozwijanej listy program automatyczn
 - ID - wewnętrzna średnica ogniwka. Ta wartość podawana jest zazwyczaj w sklepach dedykowanych technice chainmaille i w amerykańskich tutorialach.
 Możesz podać ją w milimetrach lub wybrać odpowiednią wartość w calach, która zostanie automatycznie przeliczona na milimetry.
 
-- OD - zewnętrzna średnica ogniwka. Ta wartość podawana jest zazwyczaj w polskich sklepach z półfabrykatami do biżuterii.Podajesz ją w milimetrach.
+- OD - zewnętrzna średnica ogniwka. Ta wartość podawana jest zazwyczaj w polskich sklepach z półfabrykatami do biżuterii. Podajesz ją w milimetrach.
 
 - AR - współczynnik proporcji, najważniejszy parametr w technice chainmaille.To stosunek ID do WD.
 Wartość ta określa przydatność ogniwka do poszczególnych splotów.

@@ -32,11 +32,11 @@ namespace Urania.Desktop {
         }
         private void AboutUrania_Click(object sender, System.Windows.RoutedEventArgs e) {
             string version = typeof(MainWindow).Assembly.GetName().Version.ToString();
-            string text = File.ReadAllText( @"Resources\AboutUrania.txt");
+            string text = File.ReadAllText( @"Resources\About.txt");
             text += version;
             var messageBox = new MessageBoxModel {
                 Text = text,
-                Caption = "O Uranii",
+                Caption = "O programie",
                 Buttons = new[]
                     {
                         MessageBoxButtons.Cancel("Zamknij"),
@@ -114,8 +114,8 @@ namespace Urania.Desktop {
 		}
 
         private void HowToUse_Click(object sender, RoutedEventArgs e) {
-			var howToUseText = File.ReadAllText("Resources/HowToUseUrania.txt");
-			AdonisUI.Controls.MessageBox.Show(howToUseText, "Jak korzystać z programu?", AdonisUI.Controls.MessageBoxButton.OK);
+			HowToUseUrania howToUse = new HowToUseUrania();
+			howToUse.Show();
 		}
 
 		private void IdMmRadiobutton_Checked(object sender, RoutedEventArgs e) {

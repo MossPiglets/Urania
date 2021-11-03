@@ -9,7 +9,7 @@
                              xmlns:src="clr-namespace:Urania.Desktop.States" d:DataContext="{d:DesignInstance Type=desktop:MainViewModel}"
                              x:Class="Urania.Desktop.MainWindow"
                              mc:Ignorable="d"
-                             Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
+                             Title="Kalkulator ogniwek" Height="640" Width="540" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <desktop:DecimalConverter x:Key="ToDecimal" />
@@ -29,7 +29,7 @@
                 FontSize="14">
                 <MenuItem Header="Pomoc">
                     <MenuItem Background="#FFF9E5" Header="Jak korzystać?" Click="HowToUse_Click" />
-                    <MenuItem Background="#FFF9E5" Header="O Uranii" Click="AboutUrania_Click"/>
+                    <MenuItem Background="#FFF9E5" Header="O programie" Click="AboutUrania_Click"/>
                     <MenuItem Background="#FFF9E5" Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
                 </MenuItem>
             </Menu>
@@ -38,7 +38,7 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
-            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostałe, ale jest to kłopotliwe, tym bardziej, że czasem mamy je podane w dziwnych jednostkach. Dlatego ten program zrobi to za Ciebie."
+            <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostale. Niestety często bywa to kłopotliwe, tym bardziej, że nie zawsze mamy je podane w jednostkach metrycznych.                                          Ten program policzy wszystko za Ciebie."
 					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
             <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>
@@ -99,19 +99,7 @@
                         </StackPanel>
                     </RadioButton>
                     <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
-                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}"
-                                 Checked="WdMmRadiobutton_Checked">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
-                            <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
-                                SelectionChanged="WdSwgComboBox_OnSelectionChanged"
-                                ToolTip="Wybierz z listy wartość SWG"
-                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
-                        </StackPanel>
-                    </RadioButton>
-
-                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
-                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" 
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}"
                                  Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
@@ -119,6 +107,18 @@
                                 ToolTip="Wybierz z listy wartość AWG"
                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
                                 SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" 
+                                 Checked="WdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
+                            <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
+                                SelectionChanged="WdSwgComboBox_OnSelectionChanged"
+                                ToolTip="Wybierz z listy wartość SWG"
+                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
