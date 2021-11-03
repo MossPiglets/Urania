@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="{x:Static adonisUi:Colors.AccentColor}">#D8A256</Color>
+            <Color x:Key="{x:Static adonisUi:Colors.Layer1InteractionColor}">#D8A256</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

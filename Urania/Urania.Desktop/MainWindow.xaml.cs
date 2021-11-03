@@ -18,7 +18,8 @@ namespace Urania.Desktop {
         public MainWindow() {
             InitializeComponent();
             this.DataContext = MainViewModel;
-        }
+			this.Closed += (sender, args) => Application.Current.Shutdown();
+		}
         private void CleanButton_Click(object sender, System.Windows.RoutedEventArgs e) {
             MainViewModel.WireParameters.Wd = null;
             MainViewModel.WireParameters.Id = null;

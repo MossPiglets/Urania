@@ -17,11 +17,11 @@ namespace Urania.Desktop {
 
         private bool _isParametersCountAboveTwo;
 
-        public bool IsParametersCountAboveTwo {
+        public bool IsParametersCountDifferentThanTwo {
             get => _isParametersCountAboveTwo;
             set { 
                 _isParametersCountAboveTwo = value;
-                OnPropertyChanged(nameof(IsParametersCountAboveTwo));
+                OnPropertyChanged(nameof(IsParametersCountDifferentThanTwo));
             }
         }
 
@@ -54,7 +54,7 @@ namespace Urania.Desktop {
         }
         private void CheckCalculatePossibility() {
             CanCalculate = false;
-            IsParametersCountAboveTwo = false;
+            IsParametersCountDifferentThanTwo = false;
 
             if (WireParameters.IsValid == true) {
                 int notNullCount = 0;
@@ -63,12 +63,17 @@ namespace Urania.Desktop {
                 if (WireParameters.Wd != null) notNullCount++;
                 if (WireParameters.Ar != null) notNullCount++;
 
-                if (notNullCount == 2) { 
+                if (notNullCount < 2) {
+                    IsParametersCountDifferentThanTwo = true;
+                }
+
+                if (notNullCount == 2) {
+                    IsParametersCountDifferentThanTwo = false;
                     CanCalculate = true;
                 } 
                 
                 else if (notNullCount > 2) {
-                    IsParametersCountAboveTwo = true;
+                    IsParametersCountDifferentThanTwo = true;
                 }
             } 
         }

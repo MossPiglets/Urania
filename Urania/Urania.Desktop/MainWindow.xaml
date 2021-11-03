@@ -3,20 +3,22 @@
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                              xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                             xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
                              xmlns:core="clr-namespace:Urania.Core.Data;assembly=Urania.Core"
                              xmlns:desktop="clr-namespace:Urania.Desktop"
                              xmlns:local="clr-namespace:Urania.Desktop"
                              xmlns:src="clr-namespace:Urania.Desktop.States" d:DataContext="{d:DesignInstance Type=desktop:MainViewModel}"
                              x:Class="Urania.Desktop.MainWindow"
                              mc:Ignorable="d"
-                             Title="Kalkulator ogniwek" Height="640" Width="540" >
+                             Title="Kalkulator ogniwek" SizeToContent="Height" Width="540" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <desktop:DecimalConverter x:Key="ToDecimal" />
     </Window.Resources>
-    
+
     <adonisControls:AdonisWindow.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
+
     </adonisControls:AdonisWindow.Style>
     <adonisControls:AdonisWindow.TitleBarBackground>#D8A256</adonisControls:AdonisWindow.TitleBarBackground>
     <adonisControls:AdonisWindow.TitleBarForeground>#331005</adonisControls:AdonisWindow.TitleBarForeground>
@@ -25,12 +27,16 @@
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <Menu Background="#D8A256"
-                FontFamily="Segoe UI"
-                FontSize="14">
-                <MenuItem Header="Pomoc">
-                    <MenuItem Background="#FFF9E5" Header="Jak korzystać?" Click="HowToUse_Click" />
-                    <MenuItem Background="#FFF9E5" Header="O programie" Click="AboutUrania_Click"/>
-                    <MenuItem Background="#FFF9E5" Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
+                  FontFamily="Segoe UI"
+                  FontSize="14"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  adonisExtensions:RippleExtension.BackgroundBrush="#D8A256"
+                  adonisExtensions:RippleExtension.ForegroundBrush="#D8A256"
+                  adonisExtensions:RippleExtension.BorderBrush="#D8A256">
+                <MenuItem Header="Pomoc" Foreground="#331005">
+                    <MenuItem Background="#FFF9E5" Foreground="#331005" Header="Jak korzystać?" Click="HowToUse_Click" />
+                    <MenuItem Background="#FFF9E5" Foreground="#331005" Header="O programie" Click="AboutUrania_Click"/>
+                    <MenuItem Background="#FFF9E5" Foreground="#331005" Header="Otwórz Bruxa.pl" Click="OpenBruxa_OnClick" />
                 </MenuItem>
             </Menu>
         </StackPanel>
@@ -39,22 +45,24 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50 40 50 20" >
             <TextBlock Text="W technice chainmaille kluczowe jest dokładne określenie parametrów używanych ogniwek, a w szczególności współczynnika AR. Znając tylko dwa z tych parametrów, zawsze możemy wyliczyć pozostale. Niestety często bywa to kłopotliwe, tym bardziej, że nie zawsze mamy je podane w jednostkach metrycznych.                                          Ten program policzy wszystko za Ciebie."
-					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" />
+					   TextAlignment="Left" TextWrapping="Wrap" Width="300" FontSize="13" Foreground="#331005"/>
             <Image Source="/Resources/BruxaLogo.png" Width="100" Margin="20 0 0 0" />
         </StackPanel>
-        <TextBlock Text="Wpisz (lub wybierz z listy) dwa parametry:" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" />
+        <TextBlock Text="Wpisz (lub wybierz z listy) dwa parametry:" HorizontalAlignment="Center" FontSize="13" Margin="0 0 0 20" Foreground="#331005" />
         <Grid Margin="50 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="55*" />
+                <ColumnDefinition Width="42*" />
+                <ColumnDefinition Width="13*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <GroupBox Name="LeftUpBorderID" Header="ID (Średnica wewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="0"
-                      Margin="0 0 20 45">
+            <GroupBox Name="LeftUpBorderID" BorderThickness="1" Grid.Column="0" Grid.Row="0" Header="ID (Średnica wewnętrzna)"
+                      Margin="0 0 20 45" Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel>
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
@@ -64,10 +72,11 @@
                                     IsChecked="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}}"
                                     Checked="IdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Id, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}" 
+                            <TextBox x:Name="IdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Foreground="#331005"
+                                     Text="{Binding WireParameters.Id, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}" 
                                             IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
                                             ToolTip="Wpisz odpowiednią wartość średnicy wewnętrznej w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
-                            <TextBlock Text="mm" VerticalAlignment="Center" />
+                            <TextBlock Text="mm" Foreground="#331005" VerticalAlignment="Center" />
                         </StackPanel>
                     </RadioButton>
                     <RadioButton GroupName="Id" Margin="5 5" HorizontalAlignment="Center"
@@ -77,13 +86,15 @@
                                 IsEnabled="{Binding Path=IdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:IdState.Inch}, UpdateSourceTrigger=PropertyChanged}"
                                 SelectionChanged="IdInchComboBox_OnSelectionChanged"
                                 ToolTip="Wybierz z listy wartość w calach"/>
-                            <TextBlock Text="cal" VerticalAlignment="Center" />
+                            <TextBlock Text="cal" Foreground="#331005" VerticalAlignment="Center" />
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
             </GroupBox>
             <GroupBox Name="RightUpBorderWD" Header="WD (Grubość drutu)" BorderThickness="1" Grid.Column="1" Grid.Row="0"
-                      Margin="20 0 0 10">
+                      Margin="20 0 0 10" Grid.ColumnSpan="2"
+                      Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel>
                     <StackPanel.Resources>
                         <local:ComparisonConverter x:Key="ComparisonConverter" />
@@ -92,10 +103,11 @@
                                      IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}}"
                                      Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Wd, Mode=TwoWay, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, TargetNullValue=''}"
+                            <TextBox x:Name="WdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Foreground="#331005"
+                                     Text="{Binding WireParameters.Wd, Mode=TwoWay, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, TargetNullValue=''}"
                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Millimeter}, UpdateSourceTrigger=PropertyChanged}"
                                 ToolTip="Wpisz odpowiednią wartość grubości drutu w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
-                            <TextBlock Text="mm" VerticalAlignment="Center" />
+                            <TextBlock Text="mm" Foreground="#331005" VerticalAlignment="Center" />
                         </StackPanel>
                     </RadioButton>
                     <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
@@ -114,7 +126,7 @@
                                  IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" 
                                  Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
+                            <TextBlock Text="SWG" Foreground="#331005" VerticalAlignment="Center" Margin="5 0" />
                             <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
                                 SelectionChanged="WdSwgComboBox_OnSelectionChanged"
                                 ToolTip="Wybierz z listy wartość SWG"
@@ -124,28 +136,38 @@
                 </StackPanel>
             </GroupBox>
             <GroupBox Name="LeftDownBorderOD" Header="OD (Średnica zewnętrzna)" BorderThickness="1" Grid.Column="0" Grid.Row="1"
-                      Margin="0 0 20 10">
-
+                      Margin="0 0 20 10" Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
                 <StackPanel Orientation="Horizontal" Margin="5 5" HorizontalAlignment="Center" >
-                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Text="{Binding WireParameters.Od, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
+                    <TextBox x:Name="OdTextBox" Width="100" VerticalAlignment="Center" Margin="5 0" Foreground="#331005"
+                             Text="{Binding WireParameters.Od, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
                              ToolTip="Wpisz odpowiednią wartość średnicy zewnętrznej w milimetrach" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
-                    <TextBlock Text="mm" VerticalAlignment="Center" />
+                    <TextBlock Text="mm" Foreground="#331005" VerticalAlignment="Center" />
                 </StackPanel>
             </GroupBox>
 
             <GroupBox Name="RightDownBorderAR" Header="AR (Współczynnik proporcji)" BorderThickness="1" Grid.Column="1" Grid.Row="1"
-                    Margin="20 0 0 10">
-                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding WireParameters.Ar, Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
+                      Margin="20 0 0 10" Grid.ColumnSpan="2" Foreground="#331005" Background="#FFF9E5" BorderBrush="#D8A256"
+                      adonisExtensions:GroupBoxExtension.HeaderBackground ="#D8A256">
+                <TextBox x:Name="ArTextBox" Width="100" Margin="5 5" HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Text="{Binding WireParameters.Ar,  Converter={StaticResource ToDecimal}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay, TargetNullValue=''}"
                          ToolTip="Wpisz odpowiednią wartość współczynnika proporcji" PreviewTextInput="AllowOnlyNumbers" DataObject.Pasting="AllowPastOnlyNumbers"/>
             </GroupBox>
         </Grid>
 
-        <TextBlock Text="Aby przeliczyć wpisz dokładnie dwa z podanych parametrów" HorizontalAlignment="Center" FontSize="13" Margin="0 10 0 -10" FontStyle="Italic"
-                   Visibility="{Binding Path=IsParametersCountAboveTwo, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVis}}"/>
+        <TextBlock Text="Aby przeliczyć wpisz dokładnie dwa z podanych parametrów" HorizontalAlignment="Center" FontSize="13" Foreground="#331005" Margin="0 10 0 -10" FontStyle="Italic"
+                   Visibility="{Binding Path=IsParametersCountDifferentThanTwo, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVis}}"/>
 
-        <Button Content="Przelicz" HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" Click="ButtonCalculate_OnClick" ToolTip="Oblicz brakujące parametry"
+        <Button Content="Przelicz" Foreground="#331005" Background="#FFF9E5" 
+                adonisExtensions:CursorSpotlightExtension.BackgroundBrush ="#D8A256"
+                HorizontalAlignment="Center" Width="250" Height="40" FontSize="15" Margin="0 20" 
+                Click="ButtonCalculate_OnClick" ToolTip="Oblicz brakujące parametry"
                 IsEnabled="{Binding Path=CanCalculate, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Content="Wyczyść" HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
-        
+
+        <Button Content="Wyczyść" Foreground="#331005" Background="#FFF9E5"
+                adonisExtensions:CursorSpotlightExtension.BackgroundBrush ="#D8A256"
+                HorizontalAlignment="Center" Width="100" Margin="0 0 0 20" 
+                Click="CleanButton_Click" ToolTip="Wyczyść wszystkie pola"/>
+
     </StackPanel>
 </adonisControls:AdonisWindow>
