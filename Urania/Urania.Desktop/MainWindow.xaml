@@ -9,7 +9,7 @@
                              xmlns:src="clr-namespace:Urania.Desktop.States" d:DataContext="{d:DesignInstance Type=desktop:MainViewModel}"
                              x:Class="Urania.Desktop.MainWindow"
                              mc:Ignorable="d"
-                             Title="Urania" Height="640" Width="540" ResizeMode="CanMinimize">
+                             Title="Urania" Height="640" Width="540" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
@@ -99,19 +99,7 @@ Ten program policzy wszystko za Ciebie."
                         </StackPanel>
                     </RadioButton>
                     <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
-                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}"
-                                 Checked="WdMmRadiobutton_Checked">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
-                            <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
-                                SelectionChanged="WdSwgComboBox_OnSelectionChanged"
-                                ToolTip="Wybierz z listy wartość SWG"
-                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
-                        </StackPanel>
-                    </RadioButton>
-
-                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
-                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}" 
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}}"
                                  Checked="WdMmRadiobutton_Checked">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="AWG" VerticalAlignment="Center" Margin="5 0" />
@@ -119,6 +107,18 @@ Ten program policzy wszystko za Ciebie."
                                 ToolTip="Wybierz z listy wartość AWG"
                                 IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Awg}, UpdateSourceTrigger=PropertyChanged}"
                                 SelectionChanged="WdAwgComboBox_OnSelectionChanged"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton GroupName="Wd" Margin="5 5" HorizontalAlignment="Center"
+                                 IsChecked="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}}" 
+                                 Checked="WdMmRadiobutton_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="SWG" VerticalAlignment="Center" Margin="5 0" />
+                            <ComboBox x:Name="WdSwgComboBox" Width="100" VerticalAlignment="Center" ItemsSource="{Binding Source={desktop:EnumBindingSource {x:Type core:SwgName}}}"
+                                SelectionChanged="WdSwgComboBox_OnSelectionChanged"
+                                ToolTip="Wybierz z listy wartość SWG"
+                                IsEnabled="{Binding Path=WdState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static src:WdState.Swg}, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>

@@ -5,11 +5,11 @@ namespace Urania.Desktop {
 
     public partial class HowToUseUrania {
 
-        private string lines = File.ReadAllText("/Resources/HowToUseUrania.txt");
+        private string lines = File.ReadAllText("Resources/HowToUseUrania.txt");
 
         public HowToUseUrania() {
-            lastLines.Text = lines;
             InitializeComponent();
+            lastLines.Text = lines;
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e) {
