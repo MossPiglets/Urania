@@ -1,6 +1,6 @@
 # Urania
 
-Calculator of wire parameters developed for Bruxa Jewelry in order to simplify choosing the right material for chainmaille jewelry created using WPF, C# 9.0, and .Net 5.0..
+Calculator of wire parameters developed for Bruxa Jewelry in order to simplify choosing the right material for chainmaille jewelry created using WPF, C# 9.0, and .Net 5.0.
 
 ![MainWindow](Urania/Urania.Desktop/Resources/MainWindow.png)
 
