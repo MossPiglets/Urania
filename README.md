@@ -7,6 +7,11 @@ Calculator of wire parameters developed for Bruxa Jewelry in order to simplify c
 
 # Features
 
+* Calculation of parameters based on two inputs
+* Three selectable units for wire gauge - millimeters, SWG, and AWG
+* Two units to choose from for inside diameter values - millimeters and inches
+* Clear instruction explaining the basic issues
+
 ![Other Features](Urania/Urania.Desktop/Resources/HowToUse.png)
 
 ### Usage
